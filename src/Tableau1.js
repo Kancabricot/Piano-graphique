@@ -27,6 +27,13 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gTree1', 'assets/level/ground/g-tree-1.png');
         this.load.image('gTree2', 'assets/level/ground/g-tree-2.png');
         this.load.image('gMush1', 'assets/level/ground/g-mushroom1.png');
+        this.load.image('gWater', 'assets/level/ground/g-water.png');
+        this.load.image('gSpike', 'assets/level/ground/g-spike-1.png');
+        this.load.image('gBridge', 'assets/level/ground/g-wooden-bridge.png');
+        this.load.image('gStone3', 'assets/level/ground/g-stone-3.png');
+        this.load.image('gStone4', 'assets/level/ground/g-stone-4.png');
+        this.load.image('gLeft', 'assets/level/ground/g-left.png');
+
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -145,6 +152,7 @@ class Tableau1 extends Phaser.Scene{
         let tree1=this.add.image(880,450, 'gTree1').setOrigin(0,1);
         this.groundContainer.add(tree1);
         tree1.angle=350;
+        tree1.FlipX=true
 
         // arbre 2
         let tree2=this.add.image(250,450, 'gTree2').setOrigin(0,1);
@@ -157,8 +165,43 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(tree21);
         tree21.flipX=true;
 
-        let gmush1=this.add.image(50,450, 'gMush1').setOrigin(0,1);
+        // champignon
+        let gmush1=this.add.image(140,360, 'gMush1').setOrigin(0,1);
         this.groundContainer.add(gmush1);
+        gmush1.flipX=true;
+
+        // lac
+        let water=this.add.image(590,550,'gWater')
+        this.groundContainer.add(water)
+        water.scale=1.5
+
+        // pique dans l'eau
+        let spike=this.add.image(530,500,'gSpike')
+        this.groundContainer.add(spike)
+        spike.scale=1
+        let spike2=this.add.image(725,500,'gSpike')
+        this.groundContainer.add(spike2)
+        spike2.scale=1
+
+        //pont
+        let bridge=this.add.image(380,380,'gBridge').setOrigin(0,1);
+        this.groundContainer.add(bridge)
+        bridge.scale=0.8
+
+        // pierre gauche
+        let stone3=this.add.image(300,360,'gStone3').setOrigin(0,1);
+        this.groundContainer.add(stone3)
+        stone3.scale=1
+
+        // pierre droite
+        let stone4=this.add.image(770,380,'gStone4').setOrigin(0,1);
+        this.groundContainer.add(stone4)
+        stone4.scale=0.8
+        stone4.flipX=true
+
+        let gleft=this.add.image(760,360, 'gLeft').setOrigin(0,0);
+        this.groundContainer.add(gleft);
+
 
         /**
          * Terrain 1
