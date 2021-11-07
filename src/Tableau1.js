@@ -35,6 +35,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLeft', 'assets/level/ground/g-left.png');
         this.load.image('gGrass1', 'assets/level/ground/g-grass-1.png');
         this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
+        this.load.image('gLiane1', 'assets/level/ground/g-vine-a.png');
+        this.load.image('gLiane2', 'assets/level/ground/g-vine-b.png');
+        this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
 
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
@@ -216,6 +219,53 @@ class Tableau1 extends Phaser.Scene{
         // herbe 3
         let ggrass3=this.add.image(920,320, 'gGrass2').setOrigin(0,0);
         this.groundContainer.add(ggrass3);
+
+        // lianne 1
+        let vine101=this.add.image(500,-10, 'gLiane3').setOrigin(0,0);
+        this.groundContainer.add(vine101);
+        vine101.scale=0.7
+
+        let vine102=this.add.image(500,20, 'gLiane1').setOrigin(0,0);
+        this.groundContainer.add(vine102);
+        vine102.scale=0.7
+
+        let vine103=this.add.image(505,50, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine103);
+        vine103.scale=0.7
+
+        let vine104=this.add.image(505,80, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine104);
+        vine104.scale=0.7
+
+        let vine105=this.add.image(500,110, 'gLiane3').setOrigin(0,0);
+        this.groundContainer.add(vine105);
+        vine105.scale=0.7
+
+        let vine106=this.add.image(500,140, 'gLiane1').setOrigin(0,0);
+        this.groundContainer.add(vine106);
+        vine106.scale=0.7
+
+        let vine107=this.add.image(505,170, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine107);
+        vine107.scale=0.7
+
+        // lianne 2
+        let vine201=this.add.image(550,-10, 'gLiane3').setOrigin(0,0);
+        this.groundContainer.add(vine201);
+        vine201.scale=0.7
+
+        let vine202=this.add.image(550,20, 'gLiane1').setOrigin(0,0);
+        this.groundContainer.add(vine202);
+        vine202.scale=0.7
+
+        let vine203=this.add.image(555,50, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine203);
+        vine203.scale=0.7
+
+        let vine204=this.add.image(555,80, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine204);
+        vine204.scale=0.7
+
 
 
         /**
