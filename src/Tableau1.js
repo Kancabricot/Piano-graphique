@@ -33,6 +33,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gStone3', 'assets/level/ground/g-stone-3.png');
         this.load.image('gStone4', 'assets/level/ground/g-stone-4.png');
         this.load.image('gLeft', 'assets/level/ground/g-left.png');
+        this.load.image('gGrass1', 'assets/level/ground/g-grass-1.png');
+        this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
 
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
@@ -133,9 +135,9 @@ class Tableau1 extends Phaser.Scene{
         this.bg1Container.add(bg1Terrain3);
 
         //terraine 2
-        let bg1Terrain1=this.add.image(650,350, 'bg1-terrain-1').setOrigin(0,0);
+        let bg1Terrain1=this.add.image(600,280, 'bg1-terrain-1').setOrigin(0,0);
         this.bg1Container.add(bg1Terrain1);
-        bg1Terrain1.scale=0.6;
+        bg1Terrain1.scale=0.5;
 
 
         //-------------ground (premier plan noir)---------------------------
@@ -199,8 +201,21 @@ class Tableau1 extends Phaser.Scene{
         stone4.scale=0.8
         stone4.flipX=true
 
+        // terrain droite
         let gleft=this.add.image(760,360, 'gLeft').setOrigin(0,0);
         this.groundContainer.add(gleft);
+
+        // herbe 1
+        let ggrass1=this.add.image(770,335, 'gGrass1').setOrigin(0,0);
+        this.groundContainer.add(ggrass1);
+
+        // herbe 2
+        let ggrass2=this.add.image(850,320, 'gGrass2').setOrigin(0,0);
+        this.groundContainer.add(ggrass2);
+
+        // herbe 3
+        let ggrass3=this.add.image(920,320, 'gGrass2').setOrigin(0,0);
+        this.groundContainer.add(ggrass3);
 
 
         /**
