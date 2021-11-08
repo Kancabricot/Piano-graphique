@@ -36,6 +36,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLeft', 'assets/level/ground/g-left.png');
         this.load.image('gGrass1', 'assets/level/ground/g-grass-1.png');
         this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
+        this.load.image('gGrass4', 'assets/level/ground/g-grass-4.png');
         this.load.image('gLiane1', 'assets/level/ground/g-vine-a.png');
         this.load.image('gLiane2', 'assets/level/ground/g-vine-b.png');
         this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
@@ -52,7 +53,10 @@ class Tableau1 extends Phaser.Scene{
         //filtre film
         // TODO FAIT
         for(let i=1;i<=3;i++) {
-            this.load.image('filterFilm'+i, 'assets/level/filters/film/frame-'+i+'.png');
+            this.load.image('filterFilm'+i, 'assets/level/filters/bloody/frame'+i+'.png');
+        }
+        for(let i=1;i<=3;i++) {
+            this.load.image('rain'+i, 'assets/level/weather/rain/frame'+i+'.png');
         }
         //texture au fond
         // TODO FAIT
@@ -302,13 +306,14 @@ class Tableau1 extends Phaser.Scene{
         gFellentree.scale=1.1
 
         // pique dans l'eau
-        let spikesample2=this.add.image(3380,350,'gSpike').setOrigin(0,0);
+        let spikesample2=this.add.image(3380,450,'gSpike').setOrigin(0,0);
         this.groundContainer.add(spikesample2)
         spikesample2.scale=1
-        let spike2sample2=this.add.image(spikesample2.x+spikesample2.width,500,'gSpike').setOrigin(0,0);
+        spikesample2.flipX=true
+        let spike2sample2=this.add.image(spikesample2.x+spikesample2.width,450,'gSpike').setOrigin(0,0);
         this.groundContainer.add(spike2sample2)
         spike2sample2.scale=1
-        let spike3sample2=this.add.image(spike2sample2.x+spike2sample2.width,500,'gSpike').setOrigin(0,0);
+        let spike3sample2=this.add.image(spike2sample2.x+spike2sample2.width-10,450,'gSpike').setOrigin(0,0);
         this.groundContainer.add(spike3sample2)
         spike3sample2.scale=1
 
@@ -370,6 +375,66 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(vine204);
         vine204.scale=0.7
 
+        // pierre 1 sample 4
+        let stone3sample2=this.add.image(2950,370,'gStone3').setOrigin(0,1);
+        this.groundContainer.add(stone3sample2)
+        stone3sample2.scaleX=1.8
+        stone3sample2.scaleY=1.5
+        stone3sample2.flipX=true
+
+        // arbre 1 sample 4
+        let tree2sample2=this.add.image(2900,450, 'gTree2').setOrigin(0,1);
+        this.groundContainer.add(tree2sample2);
+        tree2sample2.angle=0;
+        tree2sample2.scale=0.8;
+
+        // champignon sample 4
+        let gmush1sample2=this.add.image(3220,370, 'gMush1').setOrigin(0,1);
+        this.groundContainer.add(gmush1sample2);
+        gmush1sample2.scale=0.6
+
+        // herbe
+        let ggrass2sample2=this.add.image(3190,320, 'gGrass2').setOrigin(0,0);
+        this.groundContainer.add(ggrass2sample2);
+        let ggrass3sample2=this.add.image(3320,320, 'gGrass4').setOrigin(0,0);
+        this.groundContainer.add(ggrass3sample2);
+
+        // vine sample 4
+        let vine101sample2=this.add.image(3900,-10, 'gLiane3').setOrigin(0,0);
+        this.groundContainer.add(vine101sample2);
+        vine101sample2.scale=0.7
+
+        let vine102sample2=this.add.image(3900,20, 'gLiane1').setOrigin(0,0);
+        this.groundContainer.add(vine102sample2);
+        vine102.scale=0.7
+
+        let vine103sample2=this.add.image(3900,50, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine103sample2);
+        vine103sample2.scale=0.7
+
+        let vine104sample2=this.add.image(3900,80, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine104sample2);
+        vine104sample2.scale=0.7
+
+        let vine105sample2=this.add.image(3900,110, 'gLiane3').setOrigin(0,0);
+        this.groundContainer.add(vine105sample2);
+        vine105sample2.scale=0.7
+
+        let vine106sample2=this.add.image(3900,140, 'gLiane1').setOrigin(0,0);
+        this.groundContainer.add(vine106sample2);
+        vine106sample2.scale=0.7
+
+        let vine107sample2=this.add.image(3900,170, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine107sample2);
+        vine107sample2.scale=0.7
+
+        let vine108sample2=this.add.image(3900,170, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine108sample2);
+        vine108sample2.scale=0.7
+
+        let vine109sample2=this.add.image(3900,170, 'gLiane2').setOrigin(0,0);
+        this.groundContainer.add(vine109sample2);
+        vine109sample2.scale=0.7
 
 
         /**
@@ -421,6 +486,20 @@ class Tableau1 extends Phaser.Scene{
             repeat: -1
         });
         this.filterFilm.play('film');
+
+        this.filterFilm = this.add.sprite(0, 0, 'rain1').setOrigin(0,0);
+        //pluie
+        this.anims.create({
+            key: 'rain',
+            frames: [
+                {key:'rain1'},
+                {key:'rain2'},
+                {key:'rain3'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.filterFilm.play('rain');
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
