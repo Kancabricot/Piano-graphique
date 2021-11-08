@@ -65,6 +65,10 @@ class Tableau1 extends Phaser.Scene{
         for(let i=1;i<=3;i++) {
             this.load.image('rain'+i, 'assets/level/weather/rain/frame'+i+'.png');
         }
+
+        for(let i=1;i<=3;i++) {
+            this.load.image('snow'+i, 'assets/level/weather/snow/frame'+i+'.png');
+        }
         //texture au fond
         // TODO FAIT
         for(let i=1;i<=3;i++) {
@@ -649,6 +653,44 @@ class Tableau1 extends Phaser.Scene{
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
                     me.speed=0;
+                    break;
+            }
+        });
+        this.input.keyboard.on('p', function(kevent)
+        {
+            switch (kevent.keyCode)
+            {
+                case Phaser.Input.Keyboard.KeyCodes.P:
+                    this.anims.create({
+                        key: 'rain',
+                        frames: [
+                            {key:'rain1'},
+                            {key:'rain2'},
+                            {key:'rain3'},
+                        ],
+                        frameRate: 16,
+                        repeat: -1
+                    });
+                    this.filterRain.play('rain');
+                    break;
+            }
+        });
+        this.input.keyboard.on('s', function(kevent)
+        {
+            switch (kevent.keyCode)
+            {
+                case Phaser.Input.Keyboard.KeyCodes.S:
+                    this.anims.create({
+                        key: 'snow',
+                        frames: [
+                            {key:'snow1'},
+                            {key:'snow2'},
+                            {key:'snow3'},
+                        ],
+                        frameRate: 16,
+                        repeat: -1
+                    });
+                    this.filterRain.play('snow');
                     break;
             }
         });
