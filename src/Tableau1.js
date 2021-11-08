@@ -44,7 +44,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gFellentree', 'assets/level/ground/g-fellen-tree-1.png');
 
         //zombie en boucle
-        for(let i=1;i<=5;i++) {
+        for(let i=1;i<=9;i++) {
             this.load.image('z'+i, 'assets/level/zombie/z'+i+'.png');
         }
 
@@ -446,35 +446,35 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(z1);
         z1.scale=0.7
 
-        let z2=this.add.image(1200,250, 'z2').setOrigin(0,0);
+        let z2=this.add.image(1100,250, 'z2').setOrigin(0,0);
         this.groundContainer.add(z2);
         z2.scale=0.7
 
-        let z3=this.add.image(1200,250, 'z3').setOrigin(0,0);
+        let z3=this.add.image(1000,250, 'z3').setOrigin(0,0);
         this.groundContainer.add(z3);
         z3.scale=0.7
 
-        let z4=this.add.image(1200,250, 'z4').setOrigin(0,0);
+        let z4=this.add.image(1300,250, 'z4').setOrigin(0,0);
         this.groundContainer.add(z4);
         z4.scale=0.7
 
-        let z5=this.add.image(1200,250, 'z5').setOrigin(0,0);
+        let z5=this.add.image(1400,250, 'z5').setOrigin(0,0);
         this.groundContainer.add(z5);
         z5.scale=0.7
 
-        let z6=this.add.image(1200,250, 'z6').setOrigin(0,0);
+        let z6=this.add.image(1900,300, 'z6').setOrigin(0,0);
         this.groundContainer.add(z6);
-        z6.scale=0.7
+        z6.scale=0.4
 
-        let z7=this.add.image(1200,250, 'z7').setOrigin(0,0);
+        let z7=this.add.image(1600,250, 'z7').setOrigin(0,0);
         this.groundContainer.add(z7);
         z7.scale=0.7
 
-        let z8=this.add.image(1200,250, 'z8').setOrigin(0,0);
+        let z8=this.add.image(1700,250, 'z8').setOrigin(0,0);
         this.groundContainer.add(z8);
         z8.scale=0.7
 
-        let z9=this.add.image(1200,250, 'z9').setOrigin(0,0);
+        let z9=this.add.image(1800,250, 'z9').setOrigin(0,0);
         this.groundContainer.add(z9);
         z9.scale=0.7
 
