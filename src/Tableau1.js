@@ -27,6 +27,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gRight', 'assets/level/ground/g-right.png');
         this.load.image('gTree1', 'assets/level/ground/g-tree-1.png');
         this.load.image('gTree2', 'assets/level/ground/g-tree-2.png');
+        this.load.image('gTree3', 'assets/level/ground/g-tree-3.png');
         this.load.image('gMush1', 'assets/level/ground/g-mushroom1.png');
         this.load.image('gWater', 'assets/level/ground/g-water.png');
         this.load.image('gSpike', 'assets/level/ground/g-spike-1.png');
@@ -42,6 +43,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
         this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
         this.load.image('gFellentree', 'assets/level/ground/g-fellen-tree-1.png');
+        this.load.image('gstone', 'assets/level/ground/g-big-stone.png');
 
         //zombie en boucle
         for(let i=1;i<=9;i++) {
@@ -403,6 +405,8 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(ggrass2sample2);
         let ggrass3sample2=this.add.image(3320,320, 'gGrass4').setOrigin(0,0);
         this.groundContainer.add(ggrass3sample2);
+        let ggrass2sample2z=this.add.image(3870,400, 'gGrass2').setOrigin(0,0);
+        this.groundContainer.add(ggrass2sample2z);
 
         // vine sample 4
         let vine101sample2=this.add.image(3900,-10, 'gLiane3').setOrigin(0,0);
@@ -441,6 +445,22 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(vine109sample2);
         vine109sample2.scale=0.7
 
+        // arbre
+        let tree2sample2z=this.add.image(1650,450, 'gTree2').setOrigin(0,1);
+        this.groundContainer.add(tree2sample2z);
+        tree2sample2z.angle=-8;
+        tree2sample2z.scale=0.8;
+
+        let tree2sample2zz=this.add.image(1450,450, 'gTree1').setOrigin(0,1);
+        this.groundContainer.add(tree2sample2zz);
+        tree2sample2zz.angle=0;
+        tree2sample2zz.scale=0.8;
+
+        let tree2sample2zaz=this.add.image(1150,450, 'gTree3').setOrigin(0,1);
+        this.groundContainer.add(tree2sample2zaz);
+        tree2sample2zaz.angle=4;
+        tree2sample2zaz.scale=0.8;
+
         // quelque zombie
         let z1=this.add.image(1200,250, 'z1').setOrigin(0,0);
         this.groundContainer.add(z1);
@@ -478,8 +498,47 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(z9);
         z9.scale=0.7
 
+        // boite pile
+        let box2z=this.add.image(2190,370, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2z);
+        box2z.scale = 0.6
+        box2z.angle = 0
 
+        let box2az=this.add.image(box2z.x+box2z.width,370, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2az);
+        box2az.scale = 0.6
+        box2az.angle = 0
 
+        let box2aaz=this.add.image(box2az.x+box2az.width,370, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2aaz);
+        box2aaz.scale = 0.6
+        box2aaz.angle = 0
+
+        let box2a1az=this.add.image(2300,270, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2a1az);
+        box2a1az.scale = 0.6
+        box2a1az.angle = 0
+
+        let box2a2az=this.add.image(2255,320, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2a2az);
+        box2a2az.scale = 0.6
+        box2a2az.angle = 0
+
+        let box2a3az=this.add.image(2350,320, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2a3az);
+        box2a3az.scale = 0.6
+        box2a3az.angle = 0
+
+        // grosse pierre
+        let stone=this.add.image(2500,370, 'gstone').setOrigin(0,1);
+        this.groundContainer.add(stone);
+        stone.scale = 1.2
+        stone.angle = 0
+
+        let tree2sample2uwu=this.add.image(2750,450, 'gTree1').setOrigin(0,1);
+        this.groundContainer.add(tree2sample2uwu);
+        tree2sample2uwu.angle=-10;
+        tree2sample2uwu.scale=0.8;
 
         /**
          * Terrain 1
@@ -531,7 +590,7 @@ class Tableau1 extends Phaser.Scene{
         });
         this.filterFilm.play('film');
 
-        this.filterFilm = this.add.sprite(0, 0, 'rain1').setOrigin(0,0);
+        this.filterRain = this.add.sprite(0, 0, 'rain1').setOrigin(0,0);
         //pluie
         this.anims.create({
             key: 'rain',
@@ -543,7 +602,7 @@ class Tableau1 extends Phaser.Scene{
             frameRate: 16,
             repeat: -1
         });
-        this.filterFilm.play('rain');
+        this.filterRain.play('rain');
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
@@ -560,6 +619,7 @@ class Tableau1 extends Phaser.Scene{
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
+        this.filterRain.scrollFactorX=0;
         this.bg2Container.scrollFactorX=0.2;
         this.bg1Container.scrollFactorX=0.4;
         this.groundContainer.scrollFactorX=1;
@@ -575,10 +635,10 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=100;
+                    me.speed=1;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-100;
+                    me.speed=-1;
                     break;
             }
         });
