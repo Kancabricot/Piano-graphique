@@ -38,6 +38,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLiane1', 'assets/level/ground/g-vine-a.png');
         this.load.image('gLiane2', 'assets/level/ground/g-vine-b.png');
         this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
+        this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
 
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
@@ -192,6 +193,12 @@ class Tableau1 extends Phaser.Scene{
         let bridge=this.add.image(380,380,'gBridge').setOrigin(0,1);
         this.groundContainer.add(bridge)
         bridge.scale=0.8
+
+        // boite sur le pont
+        let box2=this.add.image(490,350, 'gBox2').setOrigin(0,1);
+        this.groundContainer.add(box2);
+        box2.scale = 0.6
+        box2.angle = 5
 
         // pierre gauche
         let stone3=this.add.image(300,360,'gStone3').setOrigin(0,1);
