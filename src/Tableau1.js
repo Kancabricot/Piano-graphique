@@ -43,6 +43,11 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
         this.load.image('gFellentree', 'assets/level/ground/g-fellen-tree-1.png');
 
+        //zombie en boucle
+        for(let i=1;i<=5;i++) {
+            this.load.image('z'+i, 'assets/level/zombie/z'+i+'.png');
+        }
+
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -406,7 +411,7 @@ class Tableau1 extends Phaser.Scene{
 
         let vine102sample2=this.add.image(3900,20, 'gLiane1').setOrigin(0,0);
         this.groundContainer.add(vine102sample2);
-        vine102.scale=0.7
+        vine102sample2.scale=0.7
 
         let vine103sample2=this.add.image(3900,50, 'gLiane2').setOrigin(0,0);
         this.groundContainer.add(vine103sample2);
@@ -435,6 +440,45 @@ class Tableau1 extends Phaser.Scene{
         let vine109sample2=this.add.image(3900,170, 'gLiane2').setOrigin(0,0);
         this.groundContainer.add(vine109sample2);
         vine109sample2.scale=0.7
+
+        // quelque zombie
+        let z1=this.add.image(1200,250, 'z1').setOrigin(0,0);
+        this.groundContainer.add(z1);
+        z1.scale=0.7
+
+        let z2=this.add.image(1200,250, 'z2').setOrigin(0,0);
+        this.groundContainer.add(z2);
+        z2.scale=0.7
+
+        let z3=this.add.image(1200,250, 'z3').setOrigin(0,0);
+        this.groundContainer.add(z3);
+        z3.scale=0.7
+
+        let z4=this.add.image(1200,250, 'z4').setOrigin(0,0);
+        this.groundContainer.add(z4);
+        z4.scale=0.7
+
+        let z5=this.add.image(1200,250, 'z5').setOrigin(0,0);
+        this.groundContainer.add(z5);
+        z5.scale=0.7
+
+        let z6=this.add.image(1200,250, 'z6').setOrigin(0,0);
+        this.groundContainer.add(z6);
+        z6.scale=0.7
+
+        let z7=this.add.image(1200,250, 'z7').setOrigin(0,0);
+        this.groundContainer.add(z7);
+        z7.scale=0.7
+
+        let z8=this.add.image(1200,250, 'z8').setOrigin(0,0);
+        this.groundContainer.add(z8);
+        z8.scale=0.7
+
+        let z9=this.add.image(1200,250, 'z9').setOrigin(0,0);
+        this.groundContainer.add(z9);
+        z9.scale=0.7
+
+
 
 
         /**
