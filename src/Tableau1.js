@@ -603,37 +603,15 @@ class Tableau1 extends Phaser.Scene{
         this.filterFilm.play('film');
 
         // idle attente du personnage
-
         this.idle = this.add.sprite(0, 0, 'animation').setOrigin(0,0);
         console.log(frames)
         this.anims.create({
             key: 'animation',
-            frames: this.getFrames("idle1.",10),
+            frames: this.getFrames("idle2.",10),
             frameRate: 12,
             repeat: -1
         });
         this.idle.play('animation');
-
-        this.filteridle = this.add.sprite(0, 0, 'Boy_idle').setOrigin(0,0);
-        this.anims.create({
-            key: 'idle1',
-            frames: this.getFrames('idle2.',10),
-            frameRate: 16,
-            repeat: -1
-        });
-        this.filteridle.play('idle1');
-        this.filteridle.scale = 0.5
-
-        // animation idle 2
-        this.filteridle2 = this.add.sprite(100, 0, 'Boy_idle').setOrigin(0,0);
-        this.anims.create({
-            key: 'idle2',
-            frames: this.getFrames('idle2.',10),
-            frameRate: 16,
-            repeat: -1
-        });
-        this.filteridle2.play('idle2');
-        this.filteridle2.scale = 0.5
 
 
 
@@ -673,8 +651,6 @@ class Tableau1 extends Phaser.Scene{
         this.bg2Container.scrollFactorX=0.2;
         this.bg1Container.scrollFactorX=0.4;
         this.groundContainer.scrollFactorX=1;
-        this.filteridle.scrollFactorX=1;
-        this.filteridle.scrollFactorX=1;
     }
 
     getFrames(prefix,length){
