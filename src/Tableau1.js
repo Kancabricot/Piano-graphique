@@ -604,45 +604,39 @@ class Tableau1 extends Phaser.Scene{
 
         // idle attente du personnage
 
-        this.filterFilm = this.add.sprite(0, 0, 'Boy_idle').setOrigin(0,0);
+        this.idle = this.add.sprite(0, 0, 'animation').setOrigin(0,0);
+        console.log(frames)
+        this.anims.create({
+            key: 'animation',
+            frames: this.getFrames("idle1.",10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.idle.play('animation');
+
+        this.filteridle = this.add.sprite(0, 0, 'Boy_idle').setOrigin(0,0);
         this.anims.create({
             key: 'idle1',
-            frames: [
-                {key:'idle1.1'},
-                {key:'idle1.2'},
-                {key:'idle1.3'},
-                {key:'idle1.4'},
-                {key:'idle1.5'},
-                {key:'idle1.6'},
-                {key:'idle1.7'},
-                {key:'idle1.8'},
-                {key:'idle1.9'},
-                {key:'idle1.10'},
-            ],
+            frames: this.getFrames('idle2.',10),
             frameRate: 16,
             repeat: -1
         });
-        this.filterFilm.play('idle1');
-// animation idle 2
-        this.filterFilm = this.add.sprite(100, 0, 'Boy_idle').setOrigin(0,0);
+        this.filteridle.play('idle1');
+        this.filteridle.scale = 0.5
+
+        // animation idle 2
+        this.filteridle2 = this.add.sprite(100, 0, 'Boy_idle').setOrigin(0,0);
         this.anims.create({
             key: 'idle2',
-            frames: [
-                {key:'idle2.1'},
-                {key:'idle2.2'},
-                {key:'idle2.3'},
-                {key:'idle2.4'},
-                {key:'idle2.5'},
-                {key:'idle2.6'},
-                {key:'idle2.7'},
-                {key:'idle2.8'},
-                {key:'idle2.9'},
-                {key:'idle2.10'},
-            ],
+            frames: this.getFrames('idle2.',10),
             frameRate: 16,
             repeat: -1
         });
-        this.filterFilm.play('idle2');
+        this.filteridle2.play('idle2');
+        this.filteridle2.scale = 0.5
+
+
+
 
 
 
@@ -679,6 +673,14 @@ class Tableau1 extends Phaser.Scene{
         this.bg2Container.scrollFactorX=0.2;
         this.bg1Container.scrollFactorX=0.4;
         this.groundContainer.scrollFactorX=1;
+    }
+
+    getFrames(prefix,length){
+        let frames=[];
+        for (let i=1;i<=length;i++){
+            frames.push({key: prefix+i});
+        }
+        return frames;
     }
     /**
      * Définit ce qui se passe quand on appuie ou relache une touche du clavier
@@ -757,6 +759,10 @@ class Tableau1 extends Phaser.Scene{
 
         //petit effet de vibrance sur le filtre film au tout premier plan
         this.filterFilm.setAlpha(Phaser.Math.Between(95,100)/100)
+
+        if(Phaser.Math.Between(0,100) === 99){
+            console.log("change animation")
+        }
     }
 
 
