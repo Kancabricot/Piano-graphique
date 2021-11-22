@@ -603,6 +603,7 @@ class Tableau1 extends Phaser.Scene{
         this.filterFilm.play('film');
 
         // idle attente du personnage
+
         this.idle = this.add.sprite(0, 0, 'animation').setOrigin(0,0);
         console.log(frames)
         this.anims.create({
