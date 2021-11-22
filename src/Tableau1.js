@@ -45,6 +45,14 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gFellentree', 'assets/level/ground/g-fellen-tree-1.png');
         this.load.image('gstone', 'assets/level/ground/g-big-stone.png');
 
+        // boucle du personage
+        for(let i=1;i<=10;i++) {
+            this.load.image('idle1.'+i, 'assets/Characters/boy/boy_style_2/PNG/idle/Layer-'+i+'.png');
+        }
+        for(let i=1;i<=10;i++) {
+            this.load.image('idle2.'+i, 'assets/Characters/boy/boy_style_2/PNG/idle2/Layer2-'+i+'.png');
+        }
+
         //zombie en boucle
         for(let i=1;i<=9;i++) {
             this.load.image('z'+i, 'assets/level/zombie/z'+i+'.png');
@@ -593,6 +601,50 @@ class Tableau1 extends Phaser.Scene{
             repeat: -1
         });
         this.filterFilm.play('film');
+
+        // idle attente du personnage
+
+        this.filterFilm = this.add.sprite(0, 0, 'Boy_idle').setOrigin(0,0);
+        this.anims.create({
+            key: 'idle1',
+            frames: [
+                {key:'idle1.1'},
+                {key:'idle1.2'},
+                {key:'idle1.3'},
+                {key:'idle1.4'},
+                {key:'idle1.5'},
+                {key:'idle1.6'},
+                {key:'idle1.7'},
+                {key:'idle1.8'},
+                {key:'idle1.9'},
+                {key:'idle1.10'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.filterFilm.play('idle1');
+// animation idle 2
+        this.filterFilm = this.add.sprite(100, 0, 'Boy_idle').setOrigin(0,0);
+        this.anims.create({
+            key: 'idle2',
+            frames: [
+                {key:'idle2.1'},
+                {key:'idle2.2'},
+                {key:'idle2.3'},
+                {key:'idle2.4'},
+                {key:'idle2.5'},
+                {key:'idle2.6'},
+                {key:'idle2.7'},
+                {key:'idle2.8'},
+                {key:'idle2.9'},
+                {key:'idle2.10'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.filterFilm.play('idle2');
+
+
 
         this.filterRain = this.add.sprite(0, 0, 'rain1').setOrigin(0,0);
         //pluie
