@@ -673,6 +673,8 @@ class Tableau1 extends Phaser.Scene{
         this.bg2Container.scrollFactorX=0.2;
         this.bg1Container.scrollFactorX=0.4;
         this.groundContainer.scrollFactorX=1;
+        this.filteridle.scrollFactorX=1;
+        this.filteridle.scrollFactorX=1;
     }
 
     getFrames(prefix,length){
