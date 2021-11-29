@@ -60,7 +60,8 @@ class Tableau1 extends Phaser.Scene {
         }
 
         for (let i = 1; i <= 12; i++) {
-            this.load.image('monsterdie.' + i, 'assets/Characters/enemy 1/PNG/die/Layer-' + i + '.png');
+            this.load.image('monsterdie' +
+                '.' + i, 'assets/Characters/enemy 1/PNG/die/Layer-' + i + '.png');
         }
 
         for (let i = 1; i <= 10; i++) {
@@ -764,6 +765,8 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.Q:
                     me.walk.setVisible(true);
                     me.walk.flipX = true;
+                    me.idle1.flipX = true;
+                    me.idle2.flipX = true;
                     me.animshoot.x += -5;
                     me.walk.x += -5;
                     me.idle1.x += -5;
@@ -776,6 +779,8 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.D:
                     me.walk.setVisible(true);
                     me.walk.flipX = false;
+                    me.idle1.flipX = false;
+                    me.idle2.flipX = false;
                     me.animshoot.x += 5;
                     me.speedidle = 5;
                     me.walk.x += 5;
