@@ -1,742 +1,248 @@
-/**
- * ALGO: ceci est une classe...
- * Vous verrez ça plus tard en détail avec Rémi, pour l'instant on n'a pas trop besoin de savoir à quoi ça sert.
- */
 class Tableau1 extends Phaser.Scene {
-    /**
-     * Précharge les assets
-     */
+
 
     preload() {
         this.testflip = 0;
-        //bg 2 (tout au fond et très flou)
-        this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
-        this.load.image('bg2-terrain-4', 'assets/level/background-2/bg2-terrain-4.png');
-        this.load.image('bg2-tree-2', 'assets/level/background-2/bg2-tree-2.png');
-        this.load.image('bg2-tree-3', 'assets/level/background-2/bg2-tree-3.png');
+        //level
+            // level 1-1
+        this.load.image('level-1-1', 'assets/level/1-1.png')
 
-        //bg 1 (gris légèrement flou)
-        this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
-        this.load.image('bg1-terrain-1', 'assets/level/background-1/bg-terrain-1.png');
-        this.load.image('bg1-terrain-4', 'assets/level/background-1/bg-terrain-4.png');
-        this.load.image('bg1-tree-1', 'assets/level/background-1/bg-tree-1.png');
-        this.load.image('bg1-tree-2', 'assets/level/background-1/bg-tree-2.png');
-        this.load.image('bg1-tree-3', 'assets/level/background-1/bg-tree-3.png');
-        this.load.image('bg1-pont', 'assets/level/background-1/bg-wooden-bridge.png');
+        // enemie
+            // goomba
+        this.load.image('goomba-1', 'assets/enemie/goomba/goomba-1.png')
+        this.load.image('goomba-2', 'assets/enemie/goomba/goomba-2.png')
 
-        //ground (premier plan noir)
-        this.load.image('gMid', 'assets/level/ground/g-mid.png');
-        this.load.image('gRight', 'assets/level/ground/g-right.png');
-        this.load.image('gTree1', 'assets/level/ground/g-tree-1.png');
-        this.load.image('gTree2', 'assets/level/ground/g-tree-2.png');
-        this.load.image('gTree3', 'assets/level/ground/g-tree-3.png');
-        this.load.image('gMush1', 'assets/level/ground/g-mushroom1.png');
-        this.load.image('gWater', 'assets/level/ground/g-water.png');
-        this.load.image('gSpike', 'assets/level/ground/g-spike-1.png');
-        this.load.image('gBridge', 'assets/level/ground/g-wooden-bridge.png');
-        this.load.image('gStone3', 'assets/level/ground/g-stone-3.png');
-        this.load.image('gStone4', 'assets/level/ground/g-stone-4.png');
-        this.load.image('gLeft', 'assets/level/ground/g-left.png');
-        this.load.image('gGrass1', 'assets/level/ground/g-grass-1.png');
-        this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
-        this.load.image('gGrass4', 'assets/level/ground/g-grass-4.png');
-        this.load.image('gLiane1', 'assets/level/ground/g-vine-a.png');
-        this.load.image('gLiane2', 'assets/level/ground/g-vine-b.png');
-        this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
-        this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
-        this.load.image('gFellentree', 'assets/level/ground/g-fellen-tree-1.png');
-        this.load.image('gstone', 'assets/level/ground/g-big-stone.png');
+            //coopa
+        this.load.image('coopa-1', 'assets/enemie/Coopa/coopa-1.png')
+        this.load.image('coopa-2', 'assets/enemie/Coopa/coopa-2.png')
 
-        // boucle du personage
-        for (let i = 1; i <= 10; i++) {
-            this.load.image('idle1.' + i, 'assets/Characters/boy/boy_style_2/PNG/idle/Layer-' + i + '.png');
-        }
-        for (let i = 1; i <= 10; i++) {
-            this.load.image('idle2.' + i, 'assets/Characters/boy/boy_style_2/PNG/idle2/Layer2-' + i + '.png');
-        }
+            //coopa
+        this.load.image('lakitu', 'assets/enemie/lakitu.png')
 
-        for (let i = 1; i <= 10; i++) {
-            this.load.image('shoot.' + i, 'assets/Characters/boy/boy_style_2/PNG/shoot/Layer-' + i + '.png');
-        }
+            //bill
+        this.load.image('bill', 'assets/enemie/bill.png')
+        this.load.image('bill-lanceur', 'assets/enemie/bill-lanceur.png')
 
-        for (let i = 1; i <= 12; i++) {
-            this.load.image('monsterdie' +
-                '.' + i, 'assets/Characters/enemy 1/PNG/die/Layer-' + i + '.png');
-        }
+            // tuyaux et plant
+        this.load.image('tuyaux', 'assets/enemie/tuyaux.png')
+        this.load.image('plant', 'assets/enemie/plant.png')
 
-        for (let i = 1; i <= 10; i++) {
-            this.load.image('walk.' + i, 'assets/Characters/boy/boy_style_2/PNG/walk/Layer-' + i + '.png');
-        }
+            // mario
+        this.load.image('mario', 'assets/mario.png')
 
-        for (let i = 1; i <= 7; i++) {
-            this.load.image('climb.' + i, 'assets/Characters/boy/boy_style_2/PNG/climb_rope/Layer-' + i + '.png');
-        }
+            // bowser
+        this.load.image('bowser', 'assets/enemie/bowser.png')
 
+            // bowser
+        this.load.image('feu', 'assets/enemie/feu.png')
 
-        //zombie en boucle
+            // nuage
+        this.load.image('nuage', 'assets/level/nuage.png')
+
+            // note de musique
         for (let i = 1; i <= 9; i++) {
-            this.load.image('z' + i, 'assets/level/zombie/z' + i + '.png');
+            this.load.image('n-'+ i, 'assets/note-musique/n-' + i + '.png');
         }
 
-
-        //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
-        // ALGO : ceci est une boucle
-        for (let i = 1; i <= 5; i++) {
-            this.load.image('g-grass-' + i, 'assets/level/ground/g-grass-' + i + '.png');
+            // effet de grésillement
+        for (let i = 1; i <= 4; i++) {
+            this.load.image('g-'+ i, 'assets/gresillement/g-' + i + '.png');
         }
 
-        //filtre film
-        // TODO FAIT
-        for (let i = 1; i <= 3; i++) {
-            this.load.image('filterFilm' + i, 'assets/level/filters/bloody/frame' + i + '.png');
-        }
-        for (let i = 1; i <= 3; i++) {
-            this.load.image('rain' + i, 'assets/level/weather/rain/frame' + i + '.png');
-        }
+            // icon mute
+        this.load.image('mute', 'assets/mute.png')
 
-        for (let i = 1; i <= 3; i++) {
-            this.load.image('snow' + i, 'assets/level/weather/snow/frame' + i + '.png');
-        }
-        //texture au fond
-        // TODO FAIT
-        for (let i = 1; i <= 3; i++) {
-            this.load.image('bg-animation-' + i, 'assets/level/background-2/bg-animation/bg-animation-' + i + '.png');
-        }
+            // icon bouton reset
+        this.load.image('reset', 'assets/bouton-reset.png')
     }
-
-    /**
-     * Crée la scène
-     * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
-     * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
-     */
 
     create() {
+        // level 1-1
+        this.add.image(0, 0, 'level-1-1').setOrigin(0, 0);
 
-        /**
-         * Fond très clair avec une trame
-         * @type {Phaser.GameObjects.Sprite}
-         */
-        let bgAnimationA = this.add.sprite(0, 0, 'bg-animation-1').setOrigin(0, 0);
+        // nuage
+        let nuage = this.add.image(200, 70, 'nuage').setOrigin(0, 0);
 
-        //--------------background 2 (tout au fond et flou)--------------------
 
-        /**
-         * contient tous les éléments du background 2 (gris clair très flou)
-         * @type {Phaser.GameObjects.Container}
-         * @see https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Container.html
-         */
-        this.bg2Container = this.add.container(0, 0);
-        /**
-         * Terrain dans bg2
-         * @type {Phaser.GameObjects.Image}
-         */
-            // première montagne
-        let bg2Terrain2 = this.add.image(-150, 150, 'bg2-terrain-2').setOrigin(0, 0);
-        this.bg2Container.add(bg2Terrain2);
-        // deuxième montagne
-        let bg2Terrain4 = this.add.image(500, 150, 'bg2-terrain-4').setOrigin(0, 0);
-        this.bg2Container.add(bg2Terrain4);
+        // animation goomba
+        this.goomba = this.add.sprite(-900, -85, 'goomba').setOrigin(0, 0);
 
-
-        /**
-         * Arbre dans bg2
-         * @type {Phaser.GameObjects.Image}
-         */
-        let bg2Tree2 = this.add.image(350, -50, 'bg2-tree-2').setOrigin(0, 0);
-        this.bg2Container.add(bg2Tree2);
-        bg2Tree2.angle = 0; //pencher l'arbre de tant degrès
-        bg2Tree2.flipX = true;
-
-        //arbres montagne deux
-        let bg2Tree3 = this.add.image(700, -60, 'bg2-tree-3').setOrigin(0, 0);
-        this.bg2Container.add(bg2Tree3);
-        bg2Tree3.angle = -7; //pencher l'arbre de tant degrès
-
-        //--------------background 1 (gris) --------------------
-
-        /**
-         * contient tous les éléments du background 1 (gris)
-         * @type {Phaser.GameObjects.Container}
-         */
-        this.bg1Container = this.add.container(0, 0);
-        /**
-         * Terrain
-         * @type {Phaser.GameObjects.Image}
-         */
-            //arbre 1 plan millieu
-        let bg1Tree1 = this.add.image(-40, -100, 'bg1-tree-1').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree1);
-        bg1Tree1.scale = 0.6
-        bg1Tree1.flipX = true
-
-        //arbre 2 plan millieu
-        let bg1Tree3 = this.add.image(120, -120, 'bg1-tree-3').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree3);
-        bg1Tree3.angle = 0; //pencher l'arbre de tant degrès
-        bg1Tree3.scale = 0.7;
-
-        //arbre 3 plan millieu
-        let bg1Tree2 = this.add.image(880, -30, 'bg1-tree-2').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree2);
-        bg1Tree2.angle = 0; //pencher l'arbre de tant degrès
-        bg1Tree2.scale = 0.8;
-
-        //terrain 1
-        let bg1Terrain3 = this.add.image(-400, 200, 'bg1-terrain-3').setOrigin(0, 0);
-        this.bg1Container.add(bg1Terrain3);
-
-        //terrain 2
-        let bg1Terrain1 = this.add.image(570, 240, 'bg1-terrain-1').setOrigin(0, 0);
-        this.bg1Container.add(bg1Terrain1);
-        bg1Terrain1.scaleX = 0.7;
-
-        //arbre sample 2
-
-        let bg1Tree1sample2 = this.add.image(1100, -30, 'bg1-tree-1').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree1sample2);
-        bg1Tree1sample2.scale = 0.6
-        bg1Tree1sample2.flipX = true
-
-        //terrain sample 4
-        let bg1Terrain4sample2 = this.add.image(900, 240, 'bg1-terrain-4').setOrigin(0, 0);
-        this.bg1Container.add(bg1Terrain4sample2);
-        bg1Terrain4sample2.scale = 0.8
-
-        //arbre 2 sample 4
-        let bg1Tree2sample2 = this.add.image(1300, -30, 'bg1-tree-3').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree2sample2);
-        bg1Tree2sample2.angle = 0; //pencher l'arbre de tant degrès
-        bg1Tree2sample2.scale = 0.8;
-
-        //pont sample 4
-        let pontsample2 = this.add.image(1470, 220, 'bg1-pont').setOrigin(0, 0);
-        this.bg1Container.add(pontsample2);
-        pontsample2.angle = 4;
-        pontsample2.scale = 1.2;
-
-        // terrain 1 sample 4
-        let bg1Terrain1sample2 = this.add.image(1800, 240, 'bg1-terrain-1').setOrigin(0, 0);
-        this.bg1Container.add(bg1Terrain1sample2);
-        bg1Terrain1sample2.scale = 0.8;
-
-        //arbre 3 sample 4
-        let bg1Tree3sample2 = this.add.image(2000, -30, 'bg1-tree-2').setOrigin(0, 0);
-        this.bg1Container.add(bg1Tree3sample2);
-        bg1Tree3sample2.angle = 0; //pencher l'arbre de tant degrès
-        bg1Tree3sample2.scale = 0.8;
-
-
-        //-------------ground (premier plan noir)---------------------------
-
-        /**
-         * contient tous les éléments du premier plan (noir)
-         * @type {Phaser.GameObjects.Container}
-         */
-        this.groundContainer = this.add.container(0, 0);
-        /**
-         * Arbre 3
-         * @type {Phaser.GameObjects.Image}
-         */
-        let tree1 = this.add.image(880, 450, 'gTree1').setOrigin(0, 1);
-        this.groundContainer.add(tree1);
-        tree1.angle = 350;
-        tree1.FlipX = true
-
-        // arbre 2
-        let tree2 = this.add.image(250, 450, 'gTree2').setOrigin(0, 1);
-        this.groundContainer.add(tree2);
-        tree2.angle = 0;
-        tree2.scale = 0.8;
-
-        // arbre 1
-        let tree21 = this.add.image(0, 450, 'gTree2').setOrigin(0, 1);
-        this.groundContainer.add(tree21);
-        tree21.flipX = true;
-
-        // champignon
-        let gmush1 = this.add.image(140, 360, 'gMush1').setOrigin(0, 1);
-        this.groundContainer.add(gmush1);
-        gmush1.flipX = true;
-
-        // lac
-        let water = this.add.image(590, 550, 'gWater')
-        this.groundContainer.add(water)
-        water.scale = 1.5
-
-        // pique dans l'eau
-        let spike = this.add.image(530, 500, 'gSpike')
-        this.groundContainer.add(spike)
-        spike.scale = 1
-        let spike2 = this.add.image(725, 500, 'gSpike')
-        this.groundContainer.add(spike2)
-        spike2.scale = 1
-
-        //pont
-        let bridge = this.add.image(380, 380, 'gBridge').setOrigin(0, 1);
-        this.groundContainer.add(bridge)
-        bridge.scale = 0.8
-
-        // boite sur le pont
-        let box2 = this.add.image(490, 350, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2);
-        box2.scale = 0.6
-        box2.angle = 5
-
-        // pierre gauche
-        let stone3 = this.add.image(300, 360, 'gStone3').setOrigin(0, 1);
-        this.groundContainer.add(stone3)
-        stone3.scale = 1
-
-        // pierre droite
-        let stone4 = this.add.image(770, 380, 'gStone4').setOrigin(0, 1);
-        this.groundContainer.add(stone4)
-        stone4.scale = 0.8
-        stone4.flipX = true
-
-        // terain continue
-        let gleft = this.add.image(760, 360, 'gLeft').setOrigin(0, 0);
-        this.groundContainer.add(gleft);
-
-        let gMid4 = this.add.image(gleft.x + gleft.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid4);
-
-        let gMid5 = this.add.image(gMid4.x + gMid4.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid5);
-
-        let gMid6 = this.add.image(gMid5.x + gMid5.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid6);
-
-        let gMid7 = this.add.image(gMid6.x + gMid6.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid7);
-
-        let gMid8 = this.add.image(gMid7.x + gMid7.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid8);
-
-        let gMid9 = this.add.image(gMid8.x + gMid8.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid9);
-
-        let gMid10 = this.add.image(gMid9.x + gMid9.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid10);
-
-        let gMid11 = this.add.image(gMid10.x + gMid10.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid11);
-
-        let gMid12 = this.add.image(gMid11.x + gMid11.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid12);
-
-        let gMid13 = this.add.image(gMid12.x + gMid12.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid13);
-
-        let gMid14 = this.add.image(gMid13.x + gMid13.width, 360, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid14);
-
-        let gRight2 = this.add.image(gMid14.x + gMid14.width, 360, 'gRight').setOrigin(0, 0);
-        this.groundContainer.add(gRight2);
-
-        // dernier terrain
-        let gLeft2 = this.add.image(3800, 420, 'gLeft').setOrigin(0, 0);
-        this.groundContainer.add(gLeft2);
-
-        //fellen tree
-        let gFellentree = this.add.image(3380, 260, 'gFellentree').setOrigin(0, 0);
-        this.groundContainer.add(gFellentree);
-        gFellentree.angle = 10;
-        gFellentree.scale = 1.1
-
-        // pique dans l'eau
-        let spikesample2 = this.add.image(3380, 450, 'gSpike').setOrigin(0, 0);
-        this.groundContainer.add(spikesample2)
-        spikesample2.scale = 1
-        spikesample2.flipX = true
-        let spike2sample2 = this.add.image(spikesample2.x + spikesample2.width, 450, 'gSpike').setOrigin(0, 0);
-        this.groundContainer.add(spike2sample2)
-        spike2sample2.scale = 1
-        let spike3sample2 = this.add.image(spike2sample2.x + spike2sample2.width - 10, 450, 'gSpike').setOrigin(0, 0);
-        this.groundContainer.add(spike3sample2)
-        spike3sample2.scale = 1
-
-        // herbe 1
-        let ggrass1 = this.add.image(770, 335, 'gGrass1').setOrigin(0, 0);
-        this.groundContainer.add(ggrass1);
-
-        // herbe 2
-        let ggrass2 = this.add.image(850, 320, 'gGrass2').setOrigin(0, 0);
-        this.groundContainer.add(ggrass2);
-
-        // herbe 3
-        let ggrass3 = this.add.image(920, 320, 'gGrass2').setOrigin(0, 0);
-        this.groundContainer.add(ggrass3);
-
-        // lianne 1
-        let vine101 = this.add.image(500, -10, 'gLiane3').setOrigin(0, 0);
-        this.groundContainer.add(vine101);
-        vine101.scale = 0.7
-
-        let vine102 = this.add.image(500, 20, 'gLiane1').setOrigin(0, 0);
-        this.groundContainer.add(vine102);
-        vine102.scale = 0.7
-
-        let vine103 = this.add.image(505, 50, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine103);
-        vine103.scale = 0.7
-
-        let vine104 = this.add.image(505, 80, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine104);
-        vine104.scale = 0.7
-
-        let vine105 = this.add.image(500, 110, 'gLiane3').setOrigin(0, 0);
-        this.groundContainer.add(vine105);
-        vine105.scale = 0.7
-
-        let vine106 = this.add.image(500, 140, 'gLiane1').setOrigin(0, 0);
-        this.groundContainer.add(vine106);
-        vine106.scale = 0.7
-
-        let vine107 = this.add.image(505, 170, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine107);
-        vine107.scale = 0.7
-
-        // lianne 2
-        let vine201 = this.add.image(550, -10, 'gLiane3').setOrigin(0, 0);
-        this.groundContainer.add(vine201);
-        vine201.scale = 0.7
-
-        let vine202 = this.add.image(550, 20, 'gLiane1').setOrigin(0, 0);
-        this.groundContainer.add(vine202);
-        vine202.scale = 0.7
-
-        let vine203 = this.add.image(555, 50, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine203);
-        vine203.scale = 0.7
-
-        let vine204 = this.add.image(555, 80, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine204);
-        vine204.scale = 0.7
-
-        // pierre 1 sample 4
-        let stone3sample2 = this.add.image(2950, 370, 'gStone3').setOrigin(0, 1);
-        this.groundContainer.add(stone3sample2)
-        stone3sample2.scaleX = 1.8
-        stone3sample2.scaleY = 1.5
-        stone3sample2.flipX = true
-
-        // arbre 1 sample 4
-        let tree2sample2 = this.add.image(2900, 450, 'gTree2').setOrigin(0, 1);
-        this.groundContainer.add(tree2sample2);
-        tree2sample2.angle = 0;
-        tree2sample2.scale = 0.8;
-
-        // champignon sample 4
-        let gmush1sample2 = this.add.image(3220, 370, 'gMush1').setOrigin(0, 1);
-        this.groundContainer.add(gmush1sample2);
-        gmush1sample2.scale = 0.6
-
-        // herbe
-        let ggrass2sample2 = this.add.image(3190, 320, 'gGrass2').setOrigin(0, 0);
-        this.groundContainer.add(ggrass2sample2);
-        let ggrass3sample2 = this.add.image(3320, 320, 'gGrass4').setOrigin(0, 0);
-        this.groundContainer.add(ggrass3sample2);
-        let ggrass2sample2z = this.add.image(3870, 400, 'gGrass2').setOrigin(0, 0);
-        this.groundContainer.add(ggrass2sample2z);
-
-        // vine sample 4
-        let vine101sample2 = this.add.image(3900, -10, 'gLiane3').setOrigin(0, 0);
-        this.groundContainer.add(vine101sample2);
-        vine101sample2.scale = 0.7
-
-        let vine102sample2 = this.add.image(3900, 20, 'gLiane1').setOrigin(0, 0);
-        this.groundContainer.add(vine102sample2);
-        vine102sample2.scale = 0.7
-
-        let vine103sample2 = this.add.image(3900, 50, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine103sample2);
-        vine103sample2.scale = 0.7
-
-        let vine104sample2 = this.add.image(3900, 80, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine104sample2);
-        vine104sample2.scale = 0.7
-
-        let vine105sample2 = this.add.image(3900, 110, 'gLiane3').setOrigin(0, 0);
-        this.groundContainer.add(vine105sample2);
-        vine105sample2.scale = 0.7
-
-        let vine106sample2 = this.add.image(3900, 140, 'gLiane1').setOrigin(0, 0);
-        this.groundContainer.add(vine106sample2);
-        vine106sample2.scale = 0.7
-
-        let vine107sample2 = this.add.image(3900, 170, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine107sample2);
-        vine107sample2.scale = 0.7
-
-        let vine108sample2 = this.add.image(3900, 170, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine108sample2);
-        vine108sample2.scale = 0.7
-
-        let vine109sample2 = this.add.image(3900, 170, 'gLiane2').setOrigin(0, 0);
-        this.groundContainer.add(vine109sample2);
-        vine109sample2.scale = 0.7
-
-        // arbre
-        let tree2sample2z = this.add.image(1650, 450, 'gTree2').setOrigin(0, 1);
-        this.groundContainer.add(tree2sample2z);
-        tree2sample2z.angle = -8;
-        tree2sample2z.scale = 0.8;
-
-        let tree2sample2zz = this.add.image(1450, 450, 'gTree1').setOrigin(0, 1);
-        this.groundContainer.add(tree2sample2zz);
-        tree2sample2zz.angle = 0;
-        tree2sample2zz.scale = 0.8;
-
-        let tree2sample2zaz = this.add.image(1150, 450, 'gTree3').setOrigin(0, 1);
-        this.groundContainer.add(tree2sample2zaz);
-        tree2sample2zaz.angle = 4;
-        tree2sample2zaz.scale = 0.8;
-
-        // quelque zombie
-        let z1 = this.add.image(1200, 250, 'z1').setOrigin(0, 0);
-        this.groundContainer.add(z1);
-        z1.scale = 0.7
-
-        let z2 = this.add.image(1100, 250, 'z2').setOrigin(0, 0);
-        this.groundContainer.add(z2);
-        z2.scale = 0.7
-
-        let z3 = this.add.image(1000, 250, 'z3').setOrigin(0, 0);
-        this.groundContainer.add(z3);
-        z3.scale = 0.7
-
-        let z4 = this.add.image(1300, 250, 'z4').setOrigin(0, 0);
-        this.groundContainer.add(z4);
-        z4.scale = 0.7
-
-        let z5 = this.add.image(1400, 250, 'z5').setOrigin(0, 0);
-        this.groundContainer.add(z5);
-        z5.scale = 0.7
-
-        let z6 = this.add.image(1900, 300, 'z6').setOrigin(0, 0);
-        this.groundContainer.add(z6);
-        z6.scale = 0.4
-
-        let z7 = this.add.image(1600, 250, 'z7').setOrigin(0, 0);
-        this.groundContainer.add(z7);
-        z7.scale = 0.7
-
-        let z8 = this.add.image(1700, 250, 'z8').setOrigin(0, 0);
-        this.groundContainer.add(z8);
-        z8.scale = 0.7
-
-        let z9 = this.add.image(1800, 250, 'z9').setOrigin(0, 0);
-        this.groundContainer.add(z9);
-        z9.scale = 0.7
-
-        // boite pile
-        let box2z = this.add.image(2190, 370, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2z);
-        box2z.scale = 0.6
-        box2z.angle = 0
-
-        let box2az = this.add.image(box2z.x + box2z.width, 370, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2az);
-        box2az.scale = 0.6
-        box2az.angle = 0
-
-        let box2aaz = this.add.image(box2az.x + box2az.width, 370, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2aaz);
-        box2aaz.scale = 0.6
-        box2aaz.angle = 0
-
-        let box2a1az = this.add.image(2300, 270, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2a1az);
-        box2a1az.scale = 0.6
-        box2a1az.angle = 0
-
-        let box2a2az = this.add.image(2255, 320, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2a2az);
-        box2a2az.scale = 0.6
-        box2a2az.angle = 0
-
-        let box2a3az = this.add.image(2350, 320, 'gBox2').setOrigin(0, 1);
-        this.groundContainer.add(box2a3az);
-        box2a3az.scale = 0.6
-        box2a3az.angle = 0
-
-        // grosse pierre
-        let stone = this.add.image(2500, 370, 'gstone').setOrigin(0, 1);
-        this.groundContainer.add(stone);
-        stone.scale = 1.2
-        stone.angle = 0
-
-        let tree2sample2uwu = this.add.image(2750, 450, 'gTree1').setOrigin(0, 1);
-        this.groundContainer.add(tree2sample2uwu);
-        tree2sample2uwu.angle = -10;
-        tree2sample2uwu.scale = 0.8;
-
-        /**
-         * Terrain 1
-         * @type {Phaser.GameObjects.Image}
-         */
-            //ici on va calculer les positions
-        let gMid1 = this.add.image(-180, 350, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid1);
-
-        /**
-         * Terrain 2
-         * @type {Phaser.GameObjects.Image}
-         */
-        let gMid2 = this.add.image(gMid1.x + gMid1.width, 350, 'gMid').setOrigin(0, 0);
-        this.groundContainer.add(gMid2); // peut être fait en boucle
-        /**
-         * Terrain 3
-         * @type {Phaser.GameObjects.Image}
-         */
-        let gMid3 = this.add.image(gMid2.x + gMid2.width, 350, 'gRight').setOrigin(0, 0);
-        this.groundContainer.add(gMid3);
-        /**
-         * De l'herbe en textures qui se répète
-         * @type {Phaser.GameObjects.TileSprite}
-         */
-        let grass = this.add.tileSprite(0, 370, gMid3.x + gMid3.width - 40, 50, 'g-grass-1').setOrigin(0, 1)
-        this.groundContainer.add(grass);
-        /**
-         * encore de l'herbe
-         * @type {Phaser.GameObjects.TileSprite}
-         */
-        let grass2 = this.add.tileSprite(0, 370, gMid3.x + gMid3.width - 40, 50, 'g-grass-3').setOrigin(0, 1)
-        this.groundContainer.add(grass2);
-        /**
-         * filtre type film au premier plan
-         * @type {Phaser.GameObjects.Sprite}
-         */
-        this.filterFilm = this.add.sprite(0, 0, 'filterFilm1').setOrigin(0, 0);
-        //animation de 3 images
         this.anims.create({
-            key: 'film',
+            key: 'goomba',
             frames: [
-                {key: 'filterFilm1'},
-                {key: 'filterFilm2'},
-                {key: 'filterFilm3'},
+                {key: 'goomba-1'},
+                {key: 'goomba-2'},
             ],
-            frameRate: 16,
+            frameRate: 4,
             repeat: -1
         });
-        this.filterFilm.play('film');
-
-        // idle attente du personnage
+        this.goomba.play('goomba');
 
 
-        this.idle1 = this.add.sprite(100, 170, 'animidle').setOrigin(0, 0);
-        console.log(frames)
+        // animation coopa
+        this.coopa = this.add.sprite(-350, -118, 'coopa').setOrigin(0, 0);
+
         this.anims.create({
-            key: 'animidle',
-            frames: this.getFrames("idle1.", 10),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.idle1.scale = 0.5;
-        this.idle1.play('animidle');
-        this.idle1.setVisible(false)
-
-        this.idle2 = this.add.sprite(100, 170, 'animidle2').setOrigin(0, 0);
-        console.log(frames)
-        this.anims.create({
-            key: 'animidle2',
-            frames: this.getFrames("idle2.", 10),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.idle2.scale = 0.5;
-        this.idle2.play('animidle2');
-        this.idle2.setVisible(true);
-
-
-
-        this.animshoot = this.add.sprite(100, 170, 'animshoot').setOrigin(0, 0);
-        console.log(frames)
-        this.anims.create({
-            key: 'animshoot',
-            frames: this.getFrames("shoot.", 10),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.animshoot.scale = 0.5;
-        this.animshoot.play('animshoot');
-        this.animshoot.setVisible(false)
-
-
-        this.monsterdie = this.add.sprite(550, 140, 'monsterdie').setOrigin(0, 0);
-        console.log(frames)
-        this.anims.create({
-            key: 'monsterdie',
-            frames: this.getFrames("monsterdie.", 10),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.monsterdie.angle = -5;
-        this.monsterdie.scale = 0.5;
-        this.monsterdie.flipX = true;
-        this.monsterdie.play('monsterdie');
-
-        this.walk = this.add.sprite(100, 170, 'walk').setOrigin(0, 0);
-        console.log(frames)
-        this.anims.create({
-            key: 'walk',
-            frames: this.getFrames("walk.", 10),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.walk.scale = 0.5;
-        this.walk.play('walk');
-        this.walk.setVisible(false)
-
-        /**this.climb = this.add.sprite(100, 170, 'climb').setOrigin(0, 0);
-        console.log(frames)
-        this.anims.create({
-            key: 'climb',
-            frames: this.getFrames("climb.", 10),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.climb.scale = 0.5;
-        this.climb.play('climb');
-        this.climb.setVisible(false)
-         **/
-
-
-        this.filterRain = this.add.sprite(0, 0, 'rain1').setOrigin(0, 0);
-        //pluie
-        this.anims.create({
-            key: 'rain',
+            key: 'coopa',
             frames: [
-                {key: 'rain1'},
-                {key: 'rain2'},
-                {key: 'rain3'},
+                {key: 'coopa-1'},
+                {key: 'coopa-2'},
             ],
-            frameRate: 16,
+            frameRate: 4,
             repeat: -1
         });
-        this.filterRain.play('rain');
+        this.coopa.play('coopa');
 
-        //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
-        //gestion du parallaxe
-        /**
-         * Vitesse de déplacement du décor
-         * @type {number}
-         */
-        this.speed = 0;
-        //initialise ce qui se passe avec le clavier
-        this.initKeyboard();
-        // Définit l'espace de déplacement de la caméra
-        this.cameras.main.setBounds(0, 0, 4000, 540);
-        //définit à quelles vitesse se déplacent nos différents plans
-        bgAnimationA.scrollFactorX = 0;
-        this.filterFilm.scrollFactorX = 0;
-        this.filterRain.scrollFactorX = 0;
-        this.bg2Container.scrollFactorX = 0.2;
-        this.bg1Container.scrollFactorX = 0.4;
-        this.groundContainer.scrollFactorX = 1;
+        // bill
+        let bill = this.add.image(650, 300, 'bill').setOrigin(0, 0);
+        bill.scale = 0.6
+
+        // bill lanceur
+        let billlanceur = this.add.image(680, 296, 'bill-lanceur').setOrigin(0, 0);
+        billlanceur.scale = 3
+
+        // plant
+        let plant = this.add.image(150, 220, 'plant').setOrigin(0, 0);
+
+        // tuyaux
+        let tuyaux = this.add.image(165, 318, 'tuyaux').setOrigin(0, 0);
+
+        // mario
+        let mario = this.add.image(320, 225, 'mario').setOrigin(0, 0);
+        mario.scale = 0.8
+
+        // lakitu
+        let lakitu = this.add.image(700, 50, 'lakitu').setOrigin(0, 0);
+
+        // note de musique en animation
+        this.note = this.add.sprite(0, 0, 'note').setOrigin(0, 0);
+        this.anims.create({
+            key: 'note',
+            frames: this.getFrames("n-", 9),
+            frameRate: 2,
+            repeat: -1,
+        });
+        this.note.play('note');
+        this.note.scale=0.1;
+
+        // feu de bowser
+        let feu = this.add.image(730, 310, 'feu').setOrigin(0, 0);
+        feu.scale = 2
+
+        // bowser
+        let bowser = this.add.image(740, 250, 'bowser').setOrigin(0, 0);
+        bowser.scale = 1.2
+
+        // grésillement en animation haut 1
+        let gresillement = this.gresillement = this.add.sprite(0, 0, 'gresillement').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement.play('gresillement');
+        this.gresillement.scale=1;
+
+        // grésillement en animation haut 2
+        let gresillement2 = this.gresillement2 = this.add.sprite(gresillement.x + gresillement.width, 0, 'gresillement2').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement2',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement2.play('gresillement2');
+        this.gresillement2.scale=1;
+
+        // grésillement en animation haut 3
+        let gresillement3 = this.gresillement3 = this.add.sprite(gresillement2.x + gresillement2.width, 0, 'gresillement3').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement3',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement3.play('gresillement3');
+        this.gresillement3.scale=1;
+
+        // grésillement en animation millieu 1
+        let gresillement4 = this.gresillement4 = this.add.sprite(0,224 , 'gresillement4').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement4',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        })
+        this.gresillement4.play('gresillement4');
+        this.gresillement4.scale=1;
+
+        // grésillement en animation millieu 2
+        let gresillement5 = this.gresillement5 = this.add.sprite(gresillement4.x + gresillement4.width, 224, 'gresillement5').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement5',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement5.play('gresillement5');
+        this.gresillement5.scale=1;
+
+        // grésillement en animation millieu 3
+        let gresillement6 = this.gresillement6 = this.add.sprite(gresillement5.x + gresillement5.width, 224, 'gresillement6').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement6',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement6.play('gresillement6');
+        this.gresillement6.scale=1;
+
+        // grésillement en animation bas 1
+        let gresillement7 = this.gresillement7 = this.add.sprite(0, 448, 'gresillement7').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement7',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement7.play('gresillement7');
+        this.gresillement7.scale=1;
+
+        // grésillement en animation bas 2
+        let gresillement8 = this.gresillement8 = this.add.sprite(gresillement7.x + gresillement7.width, 448, 'gresillement8').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement8',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement8.play('gresillement8');
+        this.gresillement8.scale=1;
+
+        // grésillement en animation bas 3 et donc fin
+        let gresillement9 = this.gresillement9 = this.add.sprite(gresillement8.x + gresillement8.width, 448, 'gresillement9').setOrigin(0, 0);
+        this.anims.create({
+            key: 'gresillement9',
+            frames: this.getFrames("g-", 4),
+            frameRate: 16,
+            repeat: -1,
+        });
+        this.gresillement9.play('gresillement9');
+        this.gresillement9.scale=1;
+
+        // icon mute
+        let mute = this.add.image(880, 0, 'mute').setOrigin(0, 0);
+        mute.scale = 0.1
+
+        // icon bouton reset
+        let reset = this.add.image(350, 150, 'reset').setOrigin(0, 0);
+        reset.scale = 1
+        reset.setVisible(false)
+
     }
-
     getFrames(prefix, length) {
         let frames = [];
         for (let i = 1; i <= length; i++) {
@@ -746,181 +252,10 @@ class Tableau1 extends Phaser.Scene {
 
     }
 
-    /**
-     * Définit ce qui se passe quand on appuie ou relache une touche du clavier
-     * ALGO : ceci est une fonction ou méthode
-     */
     initKeyboard() {
-        let me = this;
-
-
-        this.input.keyboard.on('keydown', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed = 5;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed = -5;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.walk.setVisible(true);
-                    me.walk.flipX = true;
-                    me.idle1.flipX = true;
-                    me.idle2.flipX = true;
-                    me.animshoot.x += -5;
-                    me.walk.x += -5;
-                    me.idle1.x += -5;
-                    me.idle2.x += -5;
-                    me.idle1.setVisible(false);
-                    me.idle2.setVisible(false);
-                    me.animshoot.setVisible(false)
-                    //me.climb.setVisible(false);
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.walk.setVisible(true);
-                    me.walk.flipX = false;
-                    me.idle1.flipX = false;
-                    me.idle2.flipX = false;
-                    me.animshoot.x += 5;
-                    me.speedidle = 5;
-                    me.walk.x += 5;
-                    me.idle1.x += 5;
-                    me.idle2.x += 5;
-                    me.animshoot.setVisible(false);
-                    me.idle1.setVisible(false);
-                    me.idle2.setVisible(false);
-                    //me.climb.setVisible(false);
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.E:
-                    me.walk.setVisible(false);
-                    me.walk.flipX = true;
-                    me.idle1.setVisible(false);
-                    me.idle2.setVisible(false);
-                    me.animshoot.setVisible(true);
-                    //me.climb.setVisible(false);
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.Z:
-                    me.walk.setVisible(false);
-                    me.idle1.setVisible(false);
-                    me.idle2.setVisible(false);
-                    me.animshoot.setVisible(false);
-                    //me.climb.setVisible(true);
-
-                    break;
-
-            }
-        });
-        this.input.keyboard.on('keyup', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed = 0;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.walk.setVisible(false);
-                    me.idle1.setVisible(true);
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.walk.setVisible(false);
-                    me.idle1.setVisible(true);
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.E:
-                    me.walk.setVisible(false);
-                    me.idle1.setVisible(true);
-                    me.animshoot.setVisible(false);
-                    break;
-
-            }
-        });
-        this.input.keyboard.on('p', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.P:
-                    this.anims.create({
-                        key: 'rain',
-                        frames: [
-                            {key: 'rain1'},
-                            {key: 'rain2'},
-                            {key: 'rain3'},
-                        ],
-                        frameRate: 16,
-                        repeat: -1
-                    });
-                    this.filterRain.play('rain');
-                    break;
-            }
-        });
-        this.input.keyboard.on('s', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.S:
-                    this.anims.create({
-                        key: 'snow',
-                        frames: [
-                            {key: 'snow1'},
-                            {key: 'snow2'},
-                            {key: 'snow3'},
-                        ],
-                        frameRate: 16,
-                        repeat: -1
-                    });
-                    this.filterRain.play('snow');
-                    break;
-            }
-        });
     }
 
-    /**
-     * Cette fonction s'exécute en boucle (à peu près 60 fois par secondes)
-     */
+
     update() {
-
-        let me = this;
-        me.testflip = 0;
-        if(me.walk.flipX == true){
-            me.testflip = 1;
-        }else{
-            me.testflip = 0;
-        }
-
-
-        //déplacement de la caméra
-        this.cameras.main.scrollX += this.speed; // on aurait pu écrire : this.cameras.main.scrollX= this.cameras.main.scrollX + this.speed;
-
-        //petit effet de vibrance sur le filtre film au tout premier plan
-        this.filterFilm.setAlpha(Phaser.Math.Between(95, 100) / 100)
-
-        if (Phaser.Math.Between(0, 200) === 1) {
-            console.log("change animation")
-            if (me.testflip = 1){
-                if (me.idle2.visible == true) {
-                    this.idle2.setVisible(false);
-                    me.idle1.flipX = true;
-                    this.idle1.setVisible(true);
-                    console.log('change didle');
-                    setTimeout(80)
-                } else {
-                    this.idle2.setVisible(true);
-                    me.idle2.flipX = true;
-                    this.idle1.setVisible(false);
-                    console.log('change again didle');
-                    setTimeout(80)
-                }
-            }else{
-                if (me.idle2.visible == true) {
-                    this.idle2.setVisible(false);
-                    me.idle1.flipX = false;
-                    this.idle1.setVisible(true);
-                    console.log('change didle');
-                    setTimeout(80)
-                } else {
-                    this.idle2.setVisible(true);
-                    me.idle2.flipX = false;
-                    this.idle1.setVisible(false);
-                    console.log('change again didle');
-                    setTimeout(80)
-                }
-            }
-        }
-
-
     }
 }
