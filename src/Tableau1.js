@@ -131,6 +131,7 @@ class Tableau1 extends Phaser.Scene {
         });
         this.note.play('note');
         this.note.scale=0.1;
+        this.note.setVisible(false)
 
         // feu de bowser
         this.feu = this.add.image(730, 310, 'feu').setOrigin(0, 0);
@@ -353,7 +354,58 @@ class Tableau1 extends Phaser.Scene {
                         me.gresillement8.setVisible(true)
                         me.gresillement9.setVisible(true)
                     }
+                    break;
 
+                // initialisation de la touche en appuis G-L faire lancer la musique et faire une note pour le prouver
+                case Phaser.Input.Keyboard.KeyCodes.G:
+                    if (me.note.visible == true) {
+                        me.note.setVisible(false)
+                    }
+                    else  {
+                        me.note.setVisible(true)
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.H:
+                    if (me.note.visible == true) {
+                        me.note.setVisible(false)
+                    }
+                    else  {
+                        me.note.setVisible(true)
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.J:
+                    if (me.note.visible == true) {
+                        me.note.setVisible(false)
+                    }
+                    else  {
+                        me.note.setVisible(true)
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.K:
+                    if (me.note.visible == true) {
+                        me.note.setVisible(false)
+                    }
+                    else  {
+                        me.note.setVisible(true)
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.L:
+                    if (me.note.visible == true) {
+                        me.note.setVisible(false)
+                    }
+                    else  {
+                        me.note.setVisible(true)
+                    }
+                    break;
+
+                    // initialisation de M pour faire apparaître bowser
+                case Phaser.Input.Keyboard.KeyCodes.M:
+                    if (me.bowser.visible == true) {
+                        me.bowser.setVisible(false)
+                    }
+                    else  {
+                        me.bowser.setVisible(true)
+                    }
                     break;
 
             }
