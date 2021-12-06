@@ -58,6 +58,9 @@ class Tableau1 extends Phaser.Scene {
 
     create() {
 
+        // nouveau curseur
+
+
         // level 1-1
         this.add.image(0, 0, 'level-1-1').setOrigin(0, 0);
 
@@ -150,98 +153,50 @@ class Tableau1 extends Phaser.Scene {
         this.gresillement.alpha = 0.5
 
         // grésillement en animation haut 2
-        let gresillement2 = this.gresillement2 = this.add.sprite(gresillement.x + gresillement.width, 0, 'gresillement2').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement2',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement2.play('gresillement2');
+        this.gresillement2 = this.gresillement2 = this.add.sprite(gresillement.x + gresillement.width, 0, 'gresillement2').setOrigin(0, 0);
+        this.gresillement2.play('gresillement');
         this.gresillement2.scale=1;
         this.gresillement2.alpha = 0.5
 
         // grésillement en animation haut 3
-        let gresillement3 = this.gresillement3 = this.add.sprite(gresillement2.x + gresillement2.width, 0, 'gresillement3').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement3',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement3.play('gresillement3');
+        this.gresillement3 = this.gresillement3 = this.add.sprite(gresillement.x + gresillement.width*2, 0, 'gresillement3').setOrigin(0, 0);
+        this.gresillement3.play('gresillement');
         this.gresillement3.scale=1;
         this.gresillement3.alpha = 0.5
 
         // grésillement en animation millieu 1
-        let gresillement4 = this.gresillement4 = this.add.sprite(0,224 , 'gresillement4').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement4',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        })
-        this.gresillement4.play('gresillement4');
+        this.gresillement4 = this.gresillement4 = this.add.sprite(0,224 , 'gresillement4').setOrigin(0, 0);
+        this.gresillement4.play('gresillement');
         this.gresillement4.scale=1;
         this.gresillement4.alpha = 0.5
 
         // grésillement en animation millieu 2
-        let gresillement5 = this.gresillement5 = this.add.sprite(gresillement4.x + gresillement4.width, 224, 'gresillement5').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement5',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement5.play('gresillement5');
+        this.gresillement5 = this.gresillement5 = this.add.sprite(gresillement.x + gresillement.width, 224, 'gresillement5').setOrigin(0, 0);
+        this.gresillement5.play('gresillement');
         this.gresillement5.scale=1;
         this.gresillement5.alpha = 0.5
 
         // grésillement en animation millieu 3
-        let gresillement6 = this.gresillement6 = this.add.sprite(gresillement5.x + gresillement5.width, 224, 'gresillement6').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement6',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement6.play('gresillement6');
+        this.gresillement6 = this.gresillement6 = this.add.sprite(gresillement.x + gresillement.width*2, 224, 'gresillement6').setOrigin(0, 0);
+        this.gresillement6.play('gresillement');
         this.gresillement6.scale=1;
         this.gresillement6.alpha = 0.5
 
         // grésillement en animation bas 1
-        let gresillement7 = this.gresillement7 = this.add.sprite(0, 448, 'gresillement7').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement7',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement7.play('gresillement7');
+        this.gresillement7 = this.gresillement7 = this.add.sprite(0, 448, 'gresillement7').setOrigin(0, 0);
+        this.gresillement7.play('gresillement');
         this.gresillement7.scale=1;
         this.gresillement7.alpha = 0.5
 
         // grésillement en animation bas 2
-        let gresillement8 = this.gresillement8 = this.add.sprite(gresillement7.x + gresillement7.width, 448, 'gresillement8').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement8',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement8.play('gresillement8');
+        this.gresillement8 = this.gresillement8 = this.add.sprite(gresillement.x + gresillement.width, 448, 'gresillement8').setOrigin(0, 0);
+        this.gresillement8.play('gresillement');
         this.gresillement8.scale=1;
         this.gresillement8.alpha = 0.5
 
         // grésillement en animation bas 3 et donc fin
-        let gresillement9 = this.gresillement9 = this.add.sprite(gresillement8.x + gresillement8.width, 448, 'gresillement9').setOrigin(0, 0);
-        this.anims.create({
-            key: 'gresillement9',
-            frames: this.getFrames("g-", 4),
-            frameRate: 16,
-            repeat: -1,
-        });
-        this.gresillement9.play('gresillement9');
+        this.gresillement9 = this.gresillement9 = this.add.sprite(gresillement.x + gresillement.width*2, 448, 'gresillement9').setOrigin(0, 0);
+        this.gresillement9.play('gresillement');
         this.gresillement9.alpha = 0.5
 
 
@@ -273,7 +228,7 @@ class Tableau1 extends Phaser.Scene {
         {
             switch (kevent.keyCode)
             {
-                // initialisation de la touche appuis Y pour le goomba
+                // initialisation de la touche en appuis Y pour le goomba
                 case Phaser.Input.Keyboard.KeyCodes.Y:
                 if (me.goomba.visible == true) {
                     me.goomba.setVisible(false)
@@ -283,7 +238,7 @@ class Tableau1 extends Phaser.Scene {
                 }
                 break;
 
-                // initialisation de la touche appuis U pour le coopa
+                // initialisation de la touche en appuis U pour le coopa
                 case Phaser.Input.Keyboard.KeyCodes.U:
                     if (me.coopa.visible == true) {
                         me.coopa.setVisible(false)
@@ -293,7 +248,7 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
-                // initialisation de la touche appuis I pour le bill et le bill lanceur
+                // initialisation de la touche en appuis I pour le bill et le bill lanceur
                 case Phaser.Input.Keyboard.KeyCodes.I:
                     if (me.bill.visible == true) {
                         me.bill.setVisible(false)
@@ -309,7 +264,7 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
-                // initialisation de la touche appuis O pour le tuyaux et fais disparaître la plante si on enleve le tuyaux
+                // initialisation de la touche en appuis O pour le tuyaux et fais disparaître la plante si on enleve le tuyaux
                 case Phaser.Input.Keyboard.KeyCodes.O:
                     if (me.tuyaux.visible == true) {
                         me.tuyaux.setVisible(false)
@@ -320,7 +275,7 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
-                // initialisation de la touche appuis P pour la plant et l'anime si la tuyaux n'est pas la alors ne la fait pas spawn
+                // initialisation de la touche en appuis P pour la plant et l'anime si la tuyaux n'est pas la alors ne la fait pas spawn
                 case Phaser.Input.Keyboard.KeyCodes.P:
                     if (me.plant.visible == true) {
                         me.plant.setVisible(false)
@@ -333,20 +288,17 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
-                // initialisation de la touche appuis Q pour mario et l'anime si la tuyaux n'est pas la alors ne la fait pas spawn
+                // initialisation de la touche en appuis Q pour mario
                 case Phaser.Input.Keyboard.KeyCodes.Q:
-                    if (me.plant.visible == true) {
-                        me.plant.setVisible(false)
-
+                    if (me.mario.visible == true) {
+                        me.mario.setVisible(false)
                     }
                     else  {
-                        if (me.tuyaux.visible == true) {
-                            me.plant.setVisible(true)
-                        }
+                            me.mario.setVisible(true)
                     }
                     break;
 
-                // initialisation de la touche appuis  pour le coopa
+                // initialisation de la touche en appuis S pour le curseur boule de feu
                 case Phaser.Input.Keyboard.KeyCodes.U:
                     if (me.coopa.visible == true) {
                         me.coopa.setVisible(false)
@@ -355,6 +307,55 @@ class Tableau1 extends Phaser.Scene {
                         me.coopa.setVisible(true)
                     }
                     break;
+
+                // initialisation de la touche en appuis D pour le curseur boule de feu
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    if (me.lakitu.visible == true) {
+                        me.lakitu.setVisible(false)
+                    }
+                    else  {
+                        me.lakitu.setVisible(true)
+                    }
+                    break;
+
+                // initialisation de la touche en appuis F faire bouger les nuage en tween et relacher pour stopper
+                case Phaser.Input.Keyboard.KeyCodes.F:
+                    if (me.nuage.visible == true) {
+                        me.nuage.setVisible(false)
+                    }
+                    else  {
+                        me.nuage.setVisible(true)
+                    }
+                    break;
+
+                // initialisation de la touche en appuis X mettre les bruit/neige tv
+                case Phaser.Input.Keyboard.KeyCodes.X:
+                    if (me.gresillement.visible == true) {
+
+                            me.gresillement.setVisible(false)
+                            me.gresillement2.setVisible(false)
+                            me.gresillement3.setVisible(false)
+                            me.gresillement4.setVisible(false)
+                            me.gresillement5.setVisible(false)
+                            me.gresillement6.setVisible(false)
+                            me.gresillement7.setVisible(false)
+                            me.gresillement8.setVisible(false)
+                            me.gresillement9.setVisible(false)
+                        }
+                    else  {
+                        me.gresillement.setVisible(true)
+                        me.gresillement2.setVisible(true)
+                        me.gresillement3.setVisible(true)
+                        me.gresillement4.setVisible(true)
+                        me.gresillement5.setVisible(true)
+                        me.gresillement6.setVisible(true)
+                        me.gresillement7.setVisible(true)
+                        me.gresillement8.setVisible(true)
+                        me.gresillement9.setVisible(true)
+                    }
+
+                    break;
+
             }
         });
 
