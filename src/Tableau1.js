@@ -2,7 +2,6 @@ class Tableau1 extends Phaser.Scene {
 
 
     preload() {
-        this.testflip = 0;
         //level
         // level 1-1
         this.load.image('level-1-1', 'assets/level/1-1.png')
@@ -69,7 +68,7 @@ class Tableau1 extends Phaser.Scene {
 
 
         // animation goomba
-        this.goomba = this.add.sprite(-900, -85, 'goomba').setOrigin(0, 0);
+        this.goomba = this.add.sprite(-930, -85, 'goomba').setOrigin(0, 0);
 
         this.anims.create({
             key: 'goomba',
@@ -211,6 +210,31 @@ class Tableau1 extends Phaser.Scene {
         this.reset.setVisible(false)
 
 
+        /**
+         *  Les tween sont joués dedans
+         */
+
+        // goomba en yoyo
+        let goombat = this.goomba.play(100, 300, 'goomba');
+        let goombatween = this.tweens.add({
+            targets: goombat,
+            x: -820,
+            duration: 1000,
+            ease: 'power',
+            yoyo: true,
+            loop: -1
+        });
+
+        //
+        let coopat = this.coopa.play(100, 300, 'coopa');
+        let coopatween = this.tweens.add({
+            targets: coopat,
+            x: -747,
+            duration: 1000,
+            ease: 'power',
+            yoyo: true,
+            loop: -1
+        });
 
         this.initKeyboard();
     }
@@ -414,6 +438,5 @@ class Tableau1 extends Phaser.Scene {
     }
 
     update() {
-
     }
 }
