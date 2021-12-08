@@ -39,7 +39,7 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('nuage', 'assets/level/nuage.png')
 
         // plant
-        this.load.image('plant', 'assets/enemie/plant.png')
+        this.load.image('plant-1', 'assets/enemie/plant/plant-1.png')
 
             // note de musique
         for (let i = 1; i <= 9; i++) {
@@ -115,7 +115,7 @@ class Tableau1 extends Phaser.Scene {
         this.anims.create({
             key: 'plant',
             frames: [
-                {key: 'plant'},
+                {key: 'plant-1'},
                 {key: 'lakitu'},
             ],
             frameRate: 4,
