@@ -7,45 +7,48 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('level-1-1', 'assets/level/1-1.png')
 
         // enemie
-        // goomba
+            // goomba
         this.load.image('goomba-1', 'assets/enemie/goomba/goomba-1.png')
         this.load.image('goomba-2', 'assets/enemie/goomba/goomba-2.png')
 
-        //coopa
+            //coopa
         this.load.image('coopa-1', 'assets/enemie/Coopa/coopa-1.png')
         this.load.image('coopa-2', 'assets/enemie/Coopa/coopa-2.png')
 
-        //coopa
+            //coopa
         this.load.image('lakitu', 'assets/enemie/lakitu.png')
 
-        //bill
+            //bill
         this.load.image('bill', 'assets/enemie/bill.png')
         this.load.image('bill-lanceur', 'assets/enemie/bill-lanceur.png')
 
-        // tuyaux et plant
+            // tuyaux et plant
         this.load.image('tuyaux', 'assets/enemie/tuyaux.png')
         this.load.image('plant', 'assets/enemie/plant.png')
 
-        // mario
+            // mario
         this.load.image('mario', 'assets/mario.png')
 
-        // bowser
+            // bowser
         this.load.image('bowser', 'assets/enemie/bowser.png')
 
-        // bowser
+            // bowser boule de feu
         this.load.image('feu', 'assets/enemie/feu.png')
 
-        // nuage
+            // nuage
         this.load.image('nuage', 'assets/level/nuage.png')
 
-        // note de musique
+        // plant
+        this.load.image('plant', 'assets/enemie/plant.png')
+
+            // note de musique
         for (let i = 1; i <= 9; i++) {
-            this.load.image('n-'+ i, 'assets/note-musique/n-' + i + '.png');
+            this.load.image('n-' + i, 'assets/note-musique/n-' + i + '.png');
         }
 
         // effet de grésillement
         for (let i = 1; i <= 4; i++) {
-            this.load.image('g-'+ i, 'assets/gresillement/g-' + i + '.png');
+            this.load.image('g-' + i, 'assets/gresillement/g-' + i + '.png');
         }
 
         // icon mute
@@ -84,7 +87,7 @@ class Tableau1 extends Phaser.Scene {
 
 
         // animation coopa
-        this.coopa = this.add.sprite(-350, -118, 'coopa').setOrigin(0, 0);
+        this.coopa = this.add.sprite(650, 390, 'coopa').setOrigin(0, 0);
 
         this.anims.create({
             key: 'coopa',
@@ -107,8 +110,19 @@ class Tableau1 extends Phaser.Scene {
         this.billlanceur = this.add.image(680, 296, 'bill-lanceur').setOrigin(0, 0);
         this.billlanceur.scale = 3
 
-        // plant
-        this.plant = this.add.image(150, 220, 'plant').setOrigin(0, 0);
+        // plant en animation
+        this.plant = this.add.sprite(154, 390, 'plant').setOrigin(0, 0);
+        this.anims.create({
+            key: 'plant',
+            frames: [
+                {key: 'plant'},
+                {key: 'lakitu'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+        this.plant.play('plant');
+
 
         // tuyaux
         this.tuyaux = this.add.image(165, 318, 'tuyaux').setOrigin(0, 0);
@@ -129,7 +143,7 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1,
         });
         this.note.play('note');
-        this.note.scale=0.1;
+        this.note.scale = 0.1;
         this.note.setVisible(false)
 
         // feu de bowser
@@ -149,60 +163,70 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1,
         });
         this.gresillement.play('gresillement');
-        this.gresillement.scale=1;
+        this.gresillement.scale = 1;
         this.gresillement.alpha = 0.5
+        this.gresillement.setVisible(false)
 
         // grésillement en animation haut 2
         this.gresillement2 = this.gresillement2 = this.add.sprite(gresillement.x + gresillement.width, 0, 'gresillement2').setOrigin(0, 0);
         this.gresillement2.play('gresillement');
-        this.gresillement2.scale=1;
+        this.gresillement2.scale = 1;
         this.gresillement2.alpha = 0.5
+        this.gresillement2.setVisible(false)
 
         // grésillement en animation haut 3
-        this.gresillement3 = this.gresillement3 = this.add.sprite(gresillement.x + gresillement.width*2, 0, 'gresillement3').setOrigin(0, 0);
+        this.gresillement3 = this.gresillement3 = this.add.sprite(gresillement.x + gresillement.width * 2, 0, 'gresillement3').setOrigin(0, 0);
         this.gresillement3.play('gresillement');
-        this.gresillement3.scale=1;
+        this.gresillement3.scale = 1;
         this.gresillement3.alpha = 0.5
+        this.gresillement3.setVisible(false)
 
         // grésillement en animation millieu 1
-        this.gresillement4 = this.gresillement4 = this.add.sprite(0,224 , 'gresillement4').setOrigin(0, 0);
+        this.gresillement4 = this.gresillement4 = this.add.sprite(0, 224, 'gresillement4').setOrigin(0, 0);
         this.gresillement4.play('gresillement');
-        this.gresillement4.scale=1;
+        this.gresillement4.scale = 1;
         this.gresillement4.alpha = 0.5
+        this.gresillement4.setVisible(false)
 
         // grésillement en animation millieu 2
         this.gresillement5 = this.gresillement5 = this.add.sprite(gresillement.x + gresillement.width, 224, 'gresillement5').setOrigin(0, 0);
         this.gresillement5.play('gresillement');
-        this.gresillement5.scale=1;
+        this.gresillement5.scale = 1;
         this.gresillement5.alpha = 0.5
+        this.gresillement5.setVisible(false)
 
         // grésillement en animation millieu 3
-        this.gresillement6 = this.gresillement6 = this.add.sprite(gresillement.x + gresillement.width*2, 224, 'gresillement6').setOrigin(0, 0);
+        this.gresillement6 = this.gresillement6 = this.add.sprite(gresillement.x + gresillement.width * 2, 224, 'gresillement6').setOrigin(0, 0);
         this.gresillement6.play('gresillement');
-        this.gresillement6.scale=1;
+        this.gresillement6.scale = 1;
         this.gresillement6.alpha = 0.5
+        this.gresillement6.setVisible(false)
 
         // grésillement en animation bas 1
         this.gresillement7 = this.gresillement7 = this.add.sprite(0, 448, 'gresillement7').setOrigin(0, 0);
         this.gresillement7.play('gresillement');
-        this.gresillement7.scale=1;
+        this.gresillement7.scale = 1;
         this.gresillement7.alpha = 0.5
+        this.gresillement7.setVisible(false)
 
         // grésillement en animation bas 2
         this.gresillement8 = this.gresillement8 = this.add.sprite(gresillement.x + gresillement.width, 448, 'gresillement8').setOrigin(0, 0);
         this.gresillement8.play('gresillement');
-        this.gresillement8.scale=1;
+        this.gresillement8.scale = 1;
         this.gresillement8.alpha = 0.5
+        this.gresillement8.setVisible(false)
 
         // grésillement en animation bas 3 et donc fin
-        this.gresillement9 = this.gresillement9 = this.add.sprite(gresillement.x + gresillement.width*2, 448, 'gresillement9').setOrigin(0, 0);
+        this.gresillement9 = this.gresillement9 = this.add.sprite(gresillement.x + gresillement.width * 2, 448, 'gresillement9').setOrigin(0, 0);
         this.gresillement9.play('gresillement');
         this.gresillement9.alpha = 0.5
+        this.gresillement9.setVisible(false)
 
 
         // icon mute
         this.mute = this.add.image(880, 0, 'mute').setOrigin(0, 0);
         this.mute.scale = 0.1
+
 
         // icon bouton reset
         this.reset = this.add.image(350, 150, 'reset').setOrigin(0, 0);
@@ -214,7 +238,7 @@ class Tableau1 extends Phaser.Scene {
          *  Les tween sont joués dedans
          */
 
-        // goomba en yoyo
+            // goomba en yoyo
         let goombat = this.goomba.play(100, 300, 'goomba');
         let goombatween = this.tweens.add({
             targets: goombat,
@@ -222,22 +246,35 @@ class Tableau1 extends Phaser.Scene {
             duration: 1000,
             ease: 'power',
             yoyo: true,
-            loop: -1
+            repeat: -1
         });
 
-        //
+        // coopa en yoyo
         let coopat = this.coopa.play(100, 300, 'coopa');
         let coopatween = this.tweens.add({
             targets: coopat,
-            x: -747,
-            duration: 1000,
+            x: 230,
+            duration: 3000,
             ease: 'power',
             yoyo: true,
-            loop: -1
+            repeat: -1,
+            flipX: true
+        });
+
+        // plant en yoyo Y
+        let plantt = this.plant.play(100, 300, 'plant');
+        let planttween = this.tweens.add({
+            targets: plantt,
+            y: 220,
+            duration: 3000,
+            ease: 'power',
+            yoyo: true,
+            repeat: -1,
         });
 
         this.initKeyboard();
     }
+
     getFrames(prefix, length) {
         let frames = [];
         for (let i = 1; i <= length; i++) {
@@ -248,27 +285,23 @@ class Tableau1 extends Phaser.Scene {
     }
 
     initKeyboard() {
-        let me=this;
-        this.input.keyboard.on('keyup', function(kevent)
-        {
-            switch (kevent.keyCode)
-            {
+        let me = this;
+        this.input.keyboard.on('keyup', function (kevent) {
+            switch (kevent.keyCode) {
                 // initialisation de la touche en appuis Y pour le goomba
                 case Phaser.Input.Keyboard.KeyCodes.Y:
-                if (me.goomba.visible == true) {
-                    me.goomba.setVisible(false)
-                }
-                else  {
-                    me.goomba.setVisible(true)
-                }
-                break;
+                    if (me.goomba.visible == true) {
+                        me.goomba.setVisible(false)
+                    } else {
+                        me.goomba.setVisible(true)
+                    }
+                    break;
 
                 // initialisation de la touche en appuis U pour le coopa
                 case Phaser.Input.Keyboard.KeyCodes.U:
                     if (me.coopa.visible == true) {
                         me.coopa.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.coopa.setVisible(true)
                     }
                     break;
@@ -277,14 +310,12 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.I:
                     if (me.bill.visible == true) {
                         me.bill.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.bill.setVisible(true)
                     }
                     if (me.billlanceur.visible == true) {
                         me.billlanceur.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.billlanceur.setVisible(true)
                     }
                     break;
@@ -294,8 +325,7 @@ class Tableau1 extends Phaser.Scene {
                     if (me.tuyaux.visible == true) {
                         me.tuyaux.setVisible(false)
                         me.plant.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.tuyaux.setVisible(true)
                     }
                     break;
@@ -305,8 +335,7 @@ class Tableau1 extends Phaser.Scene {
                     if (me.plant.visible == true) {
                         me.plant.setVisible(false)
 
-                    }
-                    else  {
+                    } else {
                         if (me.tuyaux.visible == true) {
                             me.plant.setVisible(true)
                         }
@@ -317,9 +346,8 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.Q:
                     if (me.mario.visible == true) {
                         me.mario.setVisible(false)
-                    }
-                    else  {
-                            me.mario.setVisible(true)
+                    } else {
+                        me.mario.setVisible(true)
                     }
                     break;
 
@@ -327,8 +355,7 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.U:
                     if (me.coopa.visible == true) {
                         me.coopa.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.coopa.setVisible(true)
                     }
                     break;
@@ -337,8 +364,7 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.D:
                     if (me.lakitu.visible == true) {
                         me.lakitu.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.lakitu.setVisible(true)
                     }
                     break;
@@ -347,8 +373,7 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.F:
                     if (me.nuage.visible == true) {
                         me.nuage.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.nuage.setVisible(true)
                     }
                     break;
@@ -357,17 +382,16 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.X:
                     if (me.gresillement.visible == true) {
 
-                            me.gresillement.setVisible(false)
-                            me.gresillement2.setVisible(false)
-                            me.gresillement3.setVisible(false)
-                            me.gresillement4.setVisible(false)
-                            me.gresillement5.setVisible(false)
-                            me.gresillement6.setVisible(false)
-                            me.gresillement7.setVisible(false)
-                            me.gresillement8.setVisible(false)
-                            me.gresillement9.setVisible(false)
-                        }
-                    else  {
+                        me.gresillement.setVisible(false)
+                        me.gresillement2.setVisible(false)
+                        me.gresillement3.setVisible(false)
+                        me.gresillement4.setVisible(false)
+                        me.gresillement5.setVisible(false)
+                        me.gresillement6.setVisible(false)
+                        me.gresillement7.setVisible(false)
+                        me.gresillement8.setVisible(false)
+                        me.gresillement9.setVisible(false)
+                    } else {
                         me.gresillement.setVisible(true)
                         me.gresillement2.setVisible(true)
                         me.gresillement3.setVisible(true)
@@ -384,50 +408,44 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.G:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.note.setVisible(true)
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.H:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.note.setVisible(true)
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.J:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.note.setVisible(true)
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.K:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.note.setVisible(true)
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.L:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
-                    }
-                    else  {
+                    } else {
                         me.note.setVisible(true)
                     }
                     break;
 
-                    // initialisation de M pour faire apparaître bowser
+                // initialisation de M pour faire apparaître bowser
                 case Phaser.Input.Keyboard.KeyCodes.M:
-                    if (me.bowser.visible == true) {
-                        me.bowser.setVisible(false)
-                    }
-                    else  {
+                    if (this.bowser.visible == true) {
+                        this.bowser.setVisible(false)
+                    } else {
                         me.bowser.setVisible(true)
                     }
                     break;
@@ -438,5 +456,7 @@ class Tableau1 extends Phaser.Scene {
     }
 
     update() {
+
+
     }
 }
