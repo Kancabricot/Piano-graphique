@@ -3,8 +3,11 @@ class Tableau1 extends Phaser.Scene {
 
     preload() {
         //level
-        // level 1-1
+            // level 1-1
         this.load.image('level-1-1', 'assets/level/1-1.png')
+
+            // level 1-2
+        this.load.image('level-1-2', 'assets/level/1-2.png')
 
         // enemie
             // goomba
@@ -24,7 +27,7 @@ class Tableau1 extends Phaser.Scene {
 
             // tuyaux et plant
         this.load.image('tuyaux', 'assets/enemie/tuyaux.png')
-        this.load.image('plant', 'assets/enemie/plant.png')
+
 
             // mario
         this.load.image('mario', 'assets/mario.png')
@@ -38,8 +41,9 @@ class Tableau1 extends Phaser.Scene {
             // nuage
         this.load.image('nuage', 'assets/level/nuage.png')
 
-        // plant
+            // plant
         this.load.image('plant-1', 'assets/enemie/plant/plant-1.png')
+        this.load.image('plant-2', 'assets/enemie/plant/plant-2.png')
 
             // note de musique
         for (let i = 1; i <= 9; i++) {
@@ -64,7 +68,11 @@ class Tableau1 extends Phaser.Scene {
 
 
         // level 1-1
-        this.add.image(0, 0, 'level-1-1').setOrigin(0, 0);
+        this.level1 = this.add.image(0, 0, 'level-1-1').setOrigin(0, 0);
+
+        // level 1-2
+        this.level2 = this.add.image(0, 0, 'level-1-2').setOrigin(0, 0);
+        this.level2.setVisible(false)
 
         // nuage
         this.nuage = this.add.image(200, 70, 'nuage').setOrigin(0, 0);
@@ -116,7 +124,7 @@ class Tableau1 extends Phaser.Scene {
             key: 'plant',
             frames: [
                 {key: 'plant-1'},
-                {key: 'lakitu'},
+                {key: 'plant-2'},
             ],
             frameRate: 4,
             repeat: -1
@@ -288,6 +296,20 @@ class Tableau1 extends Phaser.Scene {
         let me = this;
         this.input.keyboard.on('keyup', function (kevent) {
             switch (kevent.keyCode) {
+                // initialisation de la touche en appuis A pour le niveau 1-1
+                case Phaser.Input.Keyboard.KeyCodes.A:
+
+                    me.level1.setVisible(true)
+                    me.level2.setVisible(false)
+                    break;
+
+                // initialisation de la touche en appuis Z pour le niveau 2-2
+                case Phaser.Input.Keyboard.KeyCodes.Z:
+
+                    me.level1.setVisible(false)
+                    me.level2.setVisible(true)
+                    break;
+
                 // initialisation de la touche en appuis Y pour le goomba
                 case Phaser.Input.Keyboard.KeyCodes.Y:
                     if (me.goomba.visible == true) {
@@ -371,12 +393,17 @@ class Tableau1 extends Phaser.Scene {
 
                 // initialisation de la touche en appuis F faire bouger les nuage en tween et relacher pour stopper
                 case Phaser.Input.Keyboard.KeyCodes.F:
-                    if (me.nuage.visible == true) {
-                        me.nuage.setVisible(false)
-                    } else {
-                        me.nuage.setVisible(true)
-                    }
+                    // nuage  en tween
+                    let nuaget = me.add.image(100, 300, 'nuage');
+                    let nuageatween = me.tweens.add({
+                        targets: nuaget,
+                        x: 230,
+                        duration: 3000,
+                        ease: 'power',
+                        repeat: 0,
+                    });
                     break;
+
 
                 // initialisation de la touche en appuis X mettre les bruit/neige tv
                 case Phaser.Input.Keyboard.KeyCodes.X:
