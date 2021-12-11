@@ -119,7 +119,7 @@ class Tableau1 extends Phaser.Scene {
         this.billlanceur.scale = 3
 
         // plant en animation
-        this.plant = this.add.sprite(154, 390, 'plant').setOrigin(0, 0);
+        this.plant = this.add.sprite(175, 390, 'plant').setOrigin(0, 0);
         this.anims.create({
             key: 'plant',
             frames: [
@@ -273,7 +273,7 @@ class Tableau1 extends Phaser.Scene {
         let plantt = this.plant.play(100, 300, 'plant');
         let planttween = this.tweens.add({
             targets: plantt,
-            y: 220,
+            y: 230,
             duration: 3000,
             ease: 'power',
             yoyo: true,
