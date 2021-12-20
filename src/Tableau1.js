@@ -55,8 +55,6 @@ class Tableau1 extends Phaser.Scene {
         // icon mute
         this.load.image('mute', 'assets/mute.png')
 
-        // icon bouton reset
-        this.load.image('reset', 'assets/bouton-reset.png')
 
         // preload des sons et musique
 
@@ -71,7 +69,12 @@ class Tableau1 extends Phaser.Scene {
 
     create() {
 
-        let test = 0
+        // musique
+        this.mario1=this.sound.add('mario-1',{ loop: false });
+        this.mario2=this.sound.add('mario-2',{ loop: false });
+        this.mario3=this.sound.add('mario-3',{ loop: false });
+        this.mario4=this.sound.add('mario-4',{ loop: false });
+        this.mario5=this.sound.add('mario-5',{ loop: false });
 
         // nouveau curseur
         this.input.setDefaultCursor('url(assets/cursor/piece.cur), pointer');
@@ -330,12 +333,27 @@ class Tableau1 extends Phaser.Scene {
     }
 
     fireball(){
-        // mario jump en yoyo Y
+        // feu de bowser qui traverse l'écran
 
         let feut = this.add.image(730, 310, 'feu');
         feut.scale = 2
         let feutween = this.tweens.add({
             targets: feut,
+            x: -100,
+            duration: 700,
+            ease: 'power',
+            hold: 0,
+            repeat:0,
+        });
+    }
+
+    tweenbill(){
+        // bill qui traverse l'écran
+
+        let billt = this.add.image(670, 315, 'bill');
+        billt.scale = 0.7
+        let billtween = this.tweens.add({
+            targets: billt,
             x: -100,
             duration: 700,
             ease: 'power',
@@ -400,16 +418,20 @@ class Tableau1 extends Phaser.Scene {
 
                 // initialisation de la touche en appuis I pour le bill et le bill lanceur
                 case Phaser.Input.Keyboard.KeyCodes.I:
-                    if (me.bill.visible == true) {
-                        me.bill.setVisible(false)
-                    } else {
-                        me.bill.setVisible(true)
-                    }
+
                     if (me.billlanceur.visible == true) {
                         me.billlanceur.setVisible(false)
                     } else {
                         me.billlanceur.setVisible(true)
                     }
+                    break;
+
+                // initialisation de la touche en appuis V pour le tween du bill bullet
+                case Phaser.Input.Keyboard.KeyCodes.V:
+                    if (me.billlanceur.visible == true){
+                        me.tweenbill()
+                    }
+
                     break;
 
                 // initialisation de la touche en appuis O pour le tuyaux et fais disparaître la plante si on enleve le tuyaux
@@ -503,38 +525,48 @@ class Tableau1 extends Phaser.Scene {
                 case Phaser.Input.Keyboard.KeyCodes.G:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
+                        me.mario1.stop()
                     } else {
                         me.note.setVisible(true)
+                        me.mario1.play()
 
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.H:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
+                        me.mario2.stop()
                     } else {
                         me.note.setVisible(true)
+                        me.mario2.play()
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.J:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
+                        me.mario3.stop()
                     } else {
                         me.note.setVisible(true)
+                        me.mario3.play()
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.K:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
+                        me.mario4.stop()
                     } else {
                         me.note.setVisible(true)
+                        me.mario4.play()
                     }
                     break;
 
                 case Phaser.Input.Keyboard.KeyCodes.L:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
+                        me.mario5.stop()
                     } else {
                         me.note.setVisible(true)
+                        me.mario5.play()
                     }
                     break;
 
@@ -544,6 +576,11 @@ class Tableau1 extends Phaser.Scene {
                         me.mute.setVisible(false)
                     } else {
                         me.mute.setVisible(true)
+                        me.mario1.stop()
+                        me.mario2.stop()
+                        me.mario3.stop()
+                        me.mario4.stop()
+                        me.mario5.stop()
                     }
                     break;
 
@@ -587,7 +624,7 @@ class Tableau1 extends Phaser.Scene {
                     me.goomba.setVisible(false)
                     me.level1.setVisible(true)
                     me.level2.setVisible(false)
-                    this.mute.setVisible(false)
+                    me.mute.setVisible(false)
                     break;
 
 
