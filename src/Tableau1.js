@@ -42,30 +42,34 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('nuage', 'assets/level/nuage.png')
 
             // plant
-        this.load.image('plant-1', 'assets/enemie/plant/plant-1.png')
-        this.load.image('plant-2', 'assets/enemie/plant/plant-2.png')
-
+        this.loadFrames('plant-',2,'assets/enemie/plant/plant-')
             // note de musique
-        for (let i = 1; i <= 9; i++) {
-            this.load.image('n-' + i, 'assets/note-musique/n-' + i + '.png');
-        }
+        this.loadFrames('n-',9,'assets/note-musique/n-')
+            //image bruit
+        this.loadFrames('g-',4,'assets/gresillement/g-')
 
-        // effet de grésillement
-        for (let i = 1; i <= 4; i++) {
-            this.load.image('g-' + i, 'assets/gresillement/g-' + i + '.png');
-        }
 
         // icon mute
         this.load.image('mute', 'assets/mute.png')
 
         // icon bouton reset
         this.load.image('reset', 'assets/bouton-reset.png')
+
+        // preload des sons et musique
+
+            this.load.audio('mario-1',['assets/sound/mario-1.mp3']);
+            this.load.audio('mario-2',['assets/sound/mario-2.mp3']);
+            this.load.audio('mario-3',['assets/sound/mario-3.mp3']);
+            this.load.audio('mario-4',['assets/sound/mario-4.mp3']);
+            this.load.audio('mario-5',['assets/sound/mario-5.mp3']);
+
+
     }
 
     create() {
 
         // nouveau curseur
-
+        this.input.setDefaultCursor('url(assets/cursor/piece.cur), pointer');
 
         // level 1-1
         this.level1 = this.add.image(0, 0, 'level-1-1').setOrigin(0, 0);
@@ -73,10 +77,6 @@ class Tableau1 extends Phaser.Scene {
         // level 1-2
         this.level2 = this.add.image(0, 0, 'level-1-2').setOrigin(0, 0);
         this.level2.setVisible(false)
-
-        // nuage
-        this.nuage = this.add.image(200, 70, 'nuage').setOrigin(0, 0);
-
 
         // animation goomba
         this.goomba = this.add.sprite(-930, -85, 'goomba').setOrigin(0, 0);
@@ -277,19 +277,39 @@ class Tableau1 extends Phaser.Scene {
             duration: 3000,
             ease: 'power',
             yoyo: true,
+            hold: 2000,
             repeat: -1,
         });
 
         this.initKeyboard();
     }
 
+    tween(){
+        // nuage  en tween
+
+        let nuaget = this.add.image(-400, 100, 'nuage');
+        let nuageatween = this.tweens.add({
+            targets: nuaget,
+            x: 1800,
+            duration: 30000,
+            ease: 'power',
+            repeat: -1,
+        });
+
+    }
+    // pour faire des animations en plus rapide car ne note pas toutes les images grace à lui
     getFrames(prefix, length) {
         let frames = [];
         for (let i = 1; i <= length; i++) {
             frames.push({key: prefix + i});
         }
         return frames;
+    }
 
+    loadFrames(prefix,length,baseUrl){
+        for (let i=1;i<=length;i++){
+            this.load.image(prefix+i,baseUrl+i+'.png')
+        }
     }
 
     initKeyboard() {
@@ -393,15 +413,7 @@ class Tableau1 extends Phaser.Scene {
 
                 // initialisation de la touche en appuis F faire bouger les nuage en tween et relacher pour stopper
                 case Phaser.Input.Keyboard.KeyCodes.F:
-                    // nuage  en tween
-                    let nuaget = me.add.image(100, 300, 'nuage');
-                    let nuageatween = me.tweens.add({
-                        targets: nuaget,
-                        x: 230,
-                        duration: 3000,
-                        ease: 'power',
-                        repeat: 0,
-                    });
+                    me.tween()
                     break;
 
 
@@ -437,6 +449,7 @@ class Tableau1 extends Phaser.Scene {
                         me.note.setVisible(false)
                     } else {
                         me.note.setVisible(true)
+
                     }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.H:
@@ -483,7 +496,6 @@ class Tableau1 extends Phaser.Scene {
     }
 
     update() {
-
 
     }
 }
