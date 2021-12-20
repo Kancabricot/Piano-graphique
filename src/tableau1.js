@@ -4,10 +4,10 @@ class Tableau1 extends Phaser.Scene {
     preload() {
         //level
             // level 1
-        this.load.image('level-1-1', 'assets/level/level1.png')
+        this.load.image('level-1-1', 'assets/level/niveau1.png')
 
             // level 2
-        this.load.image('level-1-2', 'assets/level/level2.png')
+        this.load.image('level-1-2', 'assets/level/niveau2.png')
 
         // enemie
             // goomba
