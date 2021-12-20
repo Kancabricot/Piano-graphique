@@ -32,6 +32,9 @@ class Tableau1 extends Phaser.Scene {
             // mario
         this.load.image('mario', 'assets/mario.png')
 
+            // mario qui saute
+        this.load.image('mariojump', 'assets/mariojump.png')
+
             // bowser
         this.load.image('bowser', 'assets/enemie/bowser.png')
 
@@ -67,6 +70,8 @@ class Tableau1 extends Phaser.Scene {
     }
 
     create() {
+
+        let test = 0
 
         // nouveau curseur
         this.input.setDefaultCursor('url(assets/cursor/piece.cur), pointer');
@@ -113,10 +118,12 @@ class Tableau1 extends Phaser.Scene {
         // bill
         this.bill = this.add.image(650, 300, 'bill').setOrigin(0, 0);
         this.bill.scale = 0.6
+        this.bill.setVisible(false)
 
         // bill lanceur
         this.billlanceur = this.add.image(680, 296, 'bill-lanceur').setOrigin(0, 0);
         this.billlanceur.scale = 3
+        this.billlanceur.setVisible(false)
 
         // plant en animation
         this.plant = this.add.sprite(175, 390, 'plant').setOrigin(0, 0);
@@ -130,17 +137,26 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         this.plant.play('plant');
+        this.plant.setVisible(false)
 
 
         // tuyaux
         this.tuyaux = this.add.image(165, 318, 'tuyaux').setOrigin(0, 0);
+        this.tuyaux.setVisible(false)
 
         // mario
         this.mario = this.add.image(320, 225, 'mario').setOrigin(0, 0);
         this.mario.scale = 0.8
+        this.mario.setVisible(false)
+
+        // mario qui saute
+        this.mariojump = this.add.image(320, 225, 'mariojump').setOrigin(0, 0);
+        this.mariojump.scale = 3.5
+        this.mariojump.visible = false
 
         // lakitu
         this.lakitu = this.add.image(700, 50, 'lakitu').setOrigin(0, 0);
+        this.lakitu.setVisible(false)
 
         // note de musique en animation
         this.note = this.add.sprite(0, 0, 'note').setOrigin(0, 0);
@@ -154,13 +170,10 @@ class Tableau1 extends Phaser.Scene {
         this.note.scale = 0.1;
         this.note.setVisible(false)
 
-        // feu de bowser
-        this.feu = this.add.image(730, 310, 'feu').setOrigin(0, 0);
-        this.feu.scale = 2
-
         // bowser
         this.bowser = this.add.image(740, 250, 'bowser').setOrigin(0, 0);
         this.bowser.scale = 1.2
+        this.bowser.setVisible(false)
 
         // grésillement en animation haut 1
         let gresillement = this.gresillement = this.add.sprite(0, 0, 'gresillement').setOrigin(0, 0);
@@ -234,6 +247,7 @@ class Tableau1 extends Phaser.Scene {
         // icon mute
         this.mute = this.add.image(880, 0, 'mute').setOrigin(0, 0);
         this.mute.scale = 0.1
+        this.mute.setVisible(false)
 
 
         // icon bouton reset
@@ -284,7 +298,7 @@ class Tableau1 extends Phaser.Scene {
         this.initKeyboard();
     }
 
-    tween(){
+    tweennuage(){
         // nuage  en tween
 
         let nuaget = this.add.image(-400, 100, 'nuage');
@@ -297,6 +311,39 @@ class Tableau1 extends Phaser.Scene {
         });
 
     }
+
+
+    tweenmario(){
+        // mario jump en yoyo Y
+
+        let mariot = this.add.image(353, 278, 'mariojump');
+        mariot.scale = 3.5
+        let mariotween = this.tweens.add({
+            targets: mariot,
+            y: 200,
+            duration: 300,
+            ease: 'power',
+            yoyo: true,
+            hold: 0,
+            repeat:0,
+        });
+    }
+
+    fireball(){
+        // mario jump en yoyo Y
+
+        let feut = this.add.image(730, 310, 'feu');
+        feut.scale = 2
+        let feutween = this.tweens.add({
+            targets: feut,
+            x: -100,
+            duration: 700,
+            ease: 'power',
+            hold: 0,
+            repeat:0,
+        });
+    }
+
     // pour faire des animations en plus rapide car ne note pas toutes les images grace à lui
     getFrames(prefix, length) {
         let frames = [];
@@ -325,9 +372,12 @@ class Tableau1 extends Phaser.Scene {
 
                 // initialisation de la touche en appuis Z pour le niveau 2-2
                 case Phaser.Input.Keyboard.KeyCodes.Z:
-
+                    // met les autres niveau en invisible
                     me.level1.setVisible(false)
                     me.level2.setVisible(true)
+
+                    // replace tous les images, tween et tout
+
                     break;
 
                 // initialisation de la touche en appuis Y pour le goomba
@@ -393,7 +443,13 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
-                // initialisation de la touche en appuis S pour le curseur boule de feu
+                // initialisation de la touche en appuis S pour faire sauté mario
+                case Phaser.Input.Keyboard.KeyCodes.S:
+                        me.mario.setVisible(false)
+                        me.tweenmario()
+                    break;
+
+                // initialisation de la touche en appuis U pour le curseur boule de feu
                 case Phaser.Input.Keyboard.KeyCodes.U:
                     if (me.coopa.visible == true) {
                         me.coopa.setVisible(false)
@@ -413,7 +469,7 @@ class Tableau1 extends Phaser.Scene {
 
                 // initialisation de la touche en appuis F faire bouger les nuage en tween et relacher pour stopper
                 case Phaser.Input.Keyboard.KeyCodes.F:
-                    me.tween()
+                    me.tweennuage()
                     break;
 
 
@@ -473,6 +529,7 @@ class Tableau1 extends Phaser.Scene {
                         me.note.setVisible(true)
                     }
                     break;
+
                 case Phaser.Input.Keyboard.KeyCodes.L:
                     if (me.note.visible == true) {
                         me.note.setVisible(false)
@@ -481,14 +538,58 @@ class Tableau1 extends Phaser.Scene {
                     }
                     break;
 
+                    // suprime le son et ajoute une icone mute en suport visuel
+                case Phaser.Input.Keyboard.KeyCodes.C:
+                    if (me.mute.visible == true) {
+                        me.mute.setVisible(false)
+                    } else {
+                        me.mute.setVisible(true)
+                    }
+                    break;
+
                 // initialisation de M pour faire apparaître bowser
                 case Phaser.Input.Keyboard.KeyCodes.M:
-                    if (this.bowser.visible == true) {
-                        this.bowser.setVisible(false)
+                    if (me.bowser.visible == true) {
+                        me.bowser.setVisible(false)
                     } else {
                         me.bowser.setVisible(true)
                     }
                     break;
+
+                // initialisation de W pour faire apparaître la boule de feu de bowser
+                case Phaser.Input.Keyboard.KeyCodes.W:
+
+                        if (me.bowser.visible == true) {
+                            me.fireball()
+                        }
+                    break;
+
+                // remet tout à l'état d'origine
+                case Phaser.Input.Keyboard.KeyCodes.B:
+                    me.bowser.setVisible(false)
+                    me.note.setVisible(false)
+                    me.gresillement.setVisible(false)
+                    me.gresillement2.setVisible(false)
+                    me.gresillement3.setVisible(false)
+                    me.gresillement4.setVisible(false)
+                    me.gresillement5.setVisible(false)
+                    me.gresillement6.setVisible(false)
+                    me.gresillement7.setVisible(false)
+                    me.gresillement8.setVisible(false)
+                    me.gresillement9.setVisible(false)
+                    me.lakitu.setVisible(false)
+                    me.coopa.setVisible(false)
+                    me.mario.setVisible(false)
+                    me.plant.setVisible(false)
+                    me.tuyaux.setVisible(false)
+                    me.billlanceur.setVisible(false)
+                    me.bill.setVisible(false)
+                    me.goomba.setVisible(false)
+                    me.level1.setVisible(true)
+                    me.level2.setVisible(false)
+                    this.mute.setVisible(false)
+                    break;
+
 
             }
         });
